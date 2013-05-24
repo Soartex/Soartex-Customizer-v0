@@ -1,0 +1,210 @@
+{
+    "Ores": {
+        "name": "Ores",
+        "data": {
+            "Diamond Ore": {
+                "name": "Diamond Ore",
+                "data": [
+                    {
+                        "name": "Author 1",
+                        "url": "diamondore/1.png"
+                    },
+                    {
+                        "name": "Author 2",
+                        "url": "diamondore/2.png"
+                    },
+                    {
+                        "name": "Author 3",
+                        "url": "diamondore/3.png"
+                    },
+                    {
+                        "name": "Author 4",
+                        "url": "diamondore/4.png"
+                    }
+                ]
+            },
+            "Lapis Ore": {
+                "name": "Lapis Ore",
+                "data": [
+                    {
+                        "name": "Author 1",
+                        "url": "lapisore/1.png"
+                    },
+                    {
+                        "name": "Author 2",
+                        "url": "lapisore/2.png"
+                    },
+                    {
+                        "name": "Author 3",
+                        "url": "lapisore/3.png"
+                    },
+                    {
+                        "name": "Author 4",
+                        "url": "lapisore/4.png"
+                    }
+                ]
+            },
+            "Emerald Ore": {
+                "name": "Emerald Ore",
+                "data": [
+                    {
+                        "name": "Author 1",
+                        "url": "emeraldore/1.png"
+                    },
+                    {
+                        "name": "Author 2",
+                        "url": "emeraldore/2.png"
+                    }
+                ]
+            },
+            "Coal Ore": {
+                "name": "Coal Ore",
+                "data": [
+                    {
+                        "name": "Author 1",
+                        "url": "coalore/1.png"
+                    },
+                    {
+                        "name": "Author 2",
+                        "url": "coalore/2.png"
+                    },
+                    {
+                        "name": "Author 3",
+                        "url": "coalore/3.png"
+                    },
+                    {
+                        "name": "Author 4",
+                        "url": "coalore/4.png"
+                    }
+                ]
+            },
+            "Redstone Ore": {
+                "name": "Redstone Ore",
+                "data": [
+                    {
+                        "name": "Author 1",
+                        "url": "redstoneore/1.png"
+                    },
+                    {
+                        "name": "Author 2",
+                        "url": "redstoneore/2.png"
+                    },
+                    {
+                        "name": "Author 3",
+                        "url": "redstoneore/3.png"
+                    },
+                    {
+                        "name": "Author 4",
+                        "url": "redstoneore/4.png"
+                    }
+                ]
+            }
+        }
+    },
+    "Blocks": {
+        "name": "Blocks",
+        "data": {
+            "Lapis Block": {
+                "name": "Lapis Block",
+                "data": [
+                    {
+                        "name": "Author 1",
+                        "url": "lapisblock/1.png"
+                    },
+                    {
+                        "name": "Author 2",
+                        "url": "lapisblock/2.png"
+                    },
+                    {
+                        "name": "Author 3",
+                        "url": "lapisblock/3.png"
+                    },
+                    {
+                        "name": "Author 4",
+                        "url": "lapisblock/4.png"
+                    }
+                ]
+            },
+            "Iron Block": {
+                "name": "Iron Block",
+                "data": [
+                    {
+                        "name": "Author 1",
+                        "url": "ironblock/1.png"
+                    },
+                    {
+                        "name": "Author 2",
+                        "url": "ironblock/2.png"
+                    },
+                    {
+                        "name": "Author 3",
+                        "url": "ironblock/3.png"
+                    },
+                    {
+                        "name": "Author 4",
+                        "url": "ironblock/4.png"
+                    },
+                    {
+                        "name": "Author 5",
+                        "url": "ironblock/5.png"
+                    }
+                ]
+            }
+        }
+    },
+    "Bricks": {
+        "name": "Bricks",
+        "data": {
+            "Cracked Stone Brick": {
+                "name": "Cracked Stone Brick",
+                "data": [
+                    {
+                        "name": "Author 1",
+                        "url": "crackedstonebrick/1.png"
+                    },
+                    {
+                        "name": "Author 2",
+                        "url": "crackedstonebrick/2.png"
+                    },
+                    {
+                        "name": "Author 3",
+                        "url": "crackedstonebrick/3.png"
+                    },
+                    {
+                        "name": "Author 4",
+                        "url": "crackedstonebrick/4.png"
+                    },
+                    {
+                        "name": "Author 5",
+                        "url": "crackedstonebrick/5.png"
+                    }
+                ]
+            },
+            "Stone Brick": {
+                "name": "Stone Brick",
+                "data": [
+                    {
+                        "name": "Author 1",
+                        "url": "stonebrick/1.png"
+                    },
+                    {
+                        "name": "Author 2",
+                        "url": "stonebrick/2.png"
+                    },
+                    {
+                        "name": "Author 3",
+                        "url": "stonebrick/3.png"
+                    },
+                    {
+                        "name": "Author 4",
+                        "url": "stonebrick/4.png"
+                    },
+                    {
+                        "name": "Author 5",
+                        "url": "stonebrick/5.png"
+                    }
+                ]
+            }
+        }
+    }
+}

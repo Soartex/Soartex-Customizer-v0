@@ -7,64 +7,79 @@
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.min.css">
 	</head>
 	<body>
+		<?php
+		// Get data to display
+		$string = file_get_contents("data/data.json");
+		$json_a = json_decode($string, true);
+		?>
 		<div class="container">
+			<!--Page Header-->
+			<div class="page-header">
+				<h1><img src="assets/img/soar.png"/> Soartex Fanver <small>Customizer</small></h1>
+			</div>
+			<!--Main Forum and Customizer-->
 			<form>
 				<!--Tab Names-->
 				<ul class="nav nav-pills">
 					<li class="active">
-						<a data-toggle="tab" href="#tab1">Blocks 1</a>
+						<a data-toggle="tab" href="#info">Info</a>
 					</li>
+					<?php
+					// Create a tab for each group
+					foreach ($json_a as &$item) {
+						echo '<li><a data-toggle="tab" href="#' . $item['name'] . '">' . $item['name'] . '</a></li>';
+					}
+					?>
 					<li>
-						<a data-toggle="tab" href="#tab2">Blocks 2</a>
-					</li>
-					<li>
-						<a data-toggle="tab" href="#tab3">Blocks 3</a>
+						<a data-toggle="tab" href="#submitTab">Submit</a>
 					</li>
 				</ul>
-				<!--Content-->
+				<!--Tab Content-->
 				<div class="tab-content" style="overflow: visible;">
-					<!-- tab1 -->
-					<div class="tab-pane active" id="tab1">
-						<!--Thumbnail List-->
-						<ul class="thumbnails">
-							<li>
-								<div class="thumbnail">
-									<img src='data/coalore/1.png' id='picture' />
-									<div class="caption">
-										<h4>Coal Ore</h4>
-										<select name="dpt" style="width: 100%;" onChange="document.getElementById('picture').src=this.options[this.selectedIndex].getAttribute('data-whichPicture');" >
-											<option selected data-whichPicture='data/coalore/1.png' >Author 1</option>
-											<option data-whichPicture='data/coalore/2.png' >Author 2</option>
-											<option data-whichPicture='data/coalore/3.png' >Author 3</option>
-											<option data-whichPicture='data/coalore/4.png' >Author 4</option>
-										</select>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="thumbnail">
-									<img src='data/ornatestonebrick/1.png' id='picture2' />
-									<div class="caption">
-										<h4>Ornate Stone Brick</h4>
-										<select name="dpt" style="width: 100%;" onChange="document.getElementById('picture2').src=this.options[this.selectedIndex].getAttribute('data-whichPicture');" >
-											<option selected data-whichPicture='data/ornatestonebrick/1.png' >Author 1</option>
-											<option data-whichPicture='data/ornatestonebrick/2.png' >Author 2</option>
-											<option data-whichPicture='data/ornatestonebrick/3.png' >Author 3</option>
-											<option data-whichPicture='data/ornatestonebrick/4.png' >Author 4</option>
-											<option data-whichPicture='data/ornatestonebrick/5.png' >Author 5</option>
-										</select>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<!-- tab2 -->
-					<div class="tab-pane" id="tab2">
+					<?php
+					// Create a tab for each group
+					foreach ($json_a as &$item) {
+					echo '<div class="tab-pane" id="'.$item['name'].'">';
+					echo '<!--Thumbnail List-->';
+					echo '<ul class="thumbnails">';
+					// Go through data and display each texture
+					foreach ($item['data'] as &$texture) {
+					echo '<li>';
+					echo '<div class="thumbnail" style="width: 200px;">';		
+					// Texture Picture (default to first texture)			
+					echo '<img src="data/'.$texture['data'][0]['url'].'" id="'.$texture['name'].'" />';
+					echo '<div class="caption">';
+					// Texture name & select dropdown
+					echo '<h4>'.$texture['name'].'</h4>';
+					?>
+					<select onmouseover="this.size=this.length" onmouseout="this.size=1" name="<?php echo $texture['name']?>" style="width: 100%;" onChange="document.getElementById('<?php echo $texture['name']?>').src=this.options[this.selectedIndex].getAttribute('data-whichPicture');" >
+					<?php
+					// Add all alt textures
+					foreach ($texture['data'] as &$author) {
+						echo '<option data-whichPicture=data/' . $author['url'] . ' >' . $author['name'] . '</option>';
+					}
+					echo '</select>';
+					echo '</div></div>';
+					echo '</li>';
+					}
+					echo '</ul>';
+					echo '</div>';
 
+					}
+					?>
+					<!-- Info Page -->
+					<div class="tab-pane active" id="info">
+						<p>Welcome to the Soartex Customizer.</p>
+						<p>This is where a "how-to guide would go".</p>
 					</div>
-					<!-- tab3 -->
-					<div class="tab-pane" id="tab3">
-
+					<!-- Submit Page -->
+					<div class="tab-pane" id="submitTab">
+						<p>Submit page.</p>
+						<p>This is where you would tell the user they are about to make there pack.</p>
+						<p>This button here would send to a .php that would then create the texture pack.</p>
+						<button class="btn btn-success" type="submit" name="submit">
+								Create Pack!
+						</button>
 					</div>
 				</div>
 
@@ -73,7 +88,5 @@
 		<!--JavaScript-->
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
-		
 	</body>
 </html>
-
