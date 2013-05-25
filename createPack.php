@@ -22,8 +22,10 @@
 
 				// Create Temp Folder
 				$folder = './workfolder/' . time();
+				$folder_textures = '/files';
+				$folder_export = '/export';
 				mkdir($folder, 0777, TRUE);
-				echo '<div class="alert alert-success">Success: Created Directory</br>' . $folder . '</div>';
+				echo '<div class="alert alert-info">Please wait while we compile your content.</div>';
 
 				// Tab
 				foreach ($json_a as &$item) {
@@ -40,7 +42,7 @@
 						}
 						// Copy texture
 						if (isset($texture['export'])) {
-							$export = $folder . '/' . $texture['export'];
+							$export = $folder . $folder_textures . '/' . $texture['export'];
 							// Create Export path
 							if (!file_exists(dirname($export))) {
 								mkdir(dirname($export), 0777, TRUE);
@@ -50,8 +52,25 @@
 						}
 					}
 				}
+				echo '<div class="alert alert-info">Please wait while we compress your pack.</div>';
+				// Get the file zipper
+				include_once ('./assets/Zip_Archiver.php');
+				$export = $folder . $folder_export . '/Soartex_Fanver_Custom.zip';
+				$zip_folder = $folder . $folder_textures . '/';
+
+				mkdir(dirname($export), 0777, TRUE);
 				// Zip folder
+				Zip_Archiver::Zip($zip_folder, $export);
 				
+				// Clean up
+				echo '<div class="alert alert-info">Please wait while we clean up.</div>';
+				rrmdir($zip_folder);
+				
+				//Remove all old folders
+				
+				
+				// Done
+				echo '<div class="alert alert-success">Done! Download your pack <a href="'.$export.'">here</a></div>';
 			} else {
 				header("Location: ./index.php");
 				exit ;
@@ -60,3 +79,22 @@
 		</div>
 	</body>
 </html>
+
+<?php
+//remove recusivly everything in a directory
+function rrmdir($dir) {
+	if (is_dir($dir)) {
+		$objects = scandir($dir);
+		foreach ($objects as &$object) {
+			if ($object != "." && $object != "..") {
+				if (filetype($dir . "/" . $object) == "dir")
+					rrmdir($dir . "/" . $object);
+				else
+					unlink($dir . "/" . $object);
+			}
+		}
+		reset($objects);
+		rmdir($dir);
+	}
+}
+?>
