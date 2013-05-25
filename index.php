@@ -18,7 +18,7 @@
 				<h1><img src="assets/img/soar.png"/> Soartex Fanver <small>Customizer</small></h1>
 			</div>
 			<!--Main Forum and Customizer-->
-			<form>
+			<form action="./createPack.php" method="post">
 				<!--Tab Names-->
 				<ul class="nav nav-pills">
 					<li class="active">
