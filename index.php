@@ -20,7 +20,7 @@
 			<!--Main Forum and Customizer-->
 			<form action="./createPack.php" method="post">
 				<!--Tab Names-->
-				<ul class="nav nav-pills">
+				<ul class="nav nav-pills" style="padding-bottom: 10px;">
 					<li class="active">
 						<a data-toggle="tab" href="#info">Info</a>
 					</li>
@@ -31,9 +31,11 @@
 					}
 					?>
 					<li>
-						<a data-toggle="tab" href="#submitTab">Submit</a>
+						<a data-toggle="tab" style="background-color: rgba(147,197,114, 1); color:white;" href="#submitTab">Submit</a>
 					</li>
 				</ul>
+				<!--Nice Division-->
+				<hr>
 				<!--Tab Content-->
 				<div class="tab-content" style="overflow: visible;">
 					<?php
@@ -45,18 +47,28 @@
 					// Go through data and display each texture
 					foreach ($item['data'] as &$texture) {
 					echo '<li>';
-					echo '<div class="thumbnail" style="width: 200px;">';		
-					// Texture Picture (default to first texture)			
-					echo '<img src="data/'.$texture['data'][0]['url'].'" id="'.$texture['name'].'" />';
+					echo '<div class="thumbnail" style="width: 200px; padding-top: 15px; background-color: rgba(0, 0, 0, 0.015);">';		
+					// Texture Picture (default to first texture)
+					echo '<img style="max-width: 64px; max-height: 64px;" src="data/'.$texture['data'][0]['url'].'" id="'.$texture['name'].'" />';
 					echo '<div class="caption">';
 					// Texture name & select dropdown
 					echo '<h4>'.$texture['name'].'</h4>';
 					?>
-					<select onmouseover="this.size=this.length" onmouseout="this.size=1" name="<?php echo $texture['name']?>" style="width: 100%;" onChange="document.getElementById('<?php echo $texture['name']?>').src=this.options[this.selectedIndex].getAttribute('data-whichPicture');" >
+					<!--onmouseover="this.size=3" onmouseout="this.size=3"-->
+					<select muliple size="3" name="<?php echo $item['name'].$texture['name']?>" style="width: 100%; this.size=3" onChange="document.getElementById('<?php echo $texture['name']?>').src=this.options[this.selectedIndex].getAttribute('data-whichPicture');" >
 					<?php
 					// Add all alt textures
+					$first = true;
 					foreach ($texture['data'] as &$author) {
-						echo '<option data-whichPicture=data/' . $author['url'] . ' >' . $author['name'] . '</option>';
+						// Auto select the first one
+						if($first){
+							echo '<option selected data-whichPicture=data/' . $author['url'] . ' >' . $author['name'] . '</option>';
+							$first = false;
+						}
+						// Add rest normally
+						else{
+							echo '<option data-whichPicture=data/' . $author['url'] . ' >' . $author['name'] . '</option>';
+						}
 					}
 					echo '</select>';
 					echo '</div></div>';
