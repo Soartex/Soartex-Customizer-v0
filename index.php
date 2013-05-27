@@ -5,6 +5,7 @@
 		<!--Style Sheets-->
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.min.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/mainindex.css">
 	</head>
 	<body>
 		<?php
@@ -31,7 +32,7 @@
 					}
 					?>
 					<li>
-						<a data-toggle="tab" style="background-color: rgba(147,197,114, 1); color:white;" href="#submitTab">Submit</a>
+						<a data-toggle="tab" class="submitTab" href="#submitTab">Submit</a>
 					</li>
 				</ul>
 				<!--Nice Division-->
@@ -47,15 +48,20 @@
 					// Go through data and display each texture
 					foreach ($item['data'] as &$texture) {
 					echo '<li>';
-					echo '<div class="thumbnail" style="width: 200px; padding-top: 15px; background-color: rgba(0, 0, 0, 0.015);">';		
+
+					echo '<div class="thumbnail">';		
 					// Texture Picture (default to first texture)
-					echo '<img style="max-width: 64px; max-height: 64px;" src="data/'.$texture['data'][0]['url'].'" id="'.$texture['name'].'" />';
+					echo '<a href="data/'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'2" target="_blank">';
+					echo '<img class="textureImg" src="data/'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'" />';
+					echo '</a>';
+					
 					echo '<div class="caption">';
 					// Texture name & select dropdown
 					echo '<h4>'.$texture['name'].'</h4>';
 					?>
 					<!--onmouseover="this.size=3" onmouseout="this.size=3"-->
-					<select muliple size="3" name="<?php echo $item['name'].$texture['name']?>" style="width: 100%; this.size=3" onChange="document.getElementById('<?php echo $texture['name']?>').src=this.options[this.selectedIndex].getAttribute('data-whichPicture');" >
+					<select muliple size="3" name="<?php echo $item['name'].$texture['name']?>" 
+						onChange="document.getElementById('<?php echo $item['name'].$texture['name']?>').src=this.options[this.selectedIndex].getAttribute('data-whichPicture'); document.getElementById('<?php echo $item['name'].$texture['name']?>2').href=this.options[this.selectedIndex].getAttribute('data-whichPicture');" >
 					<?php
 					// Add all alt textures
 					$first = true;
