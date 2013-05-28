@@ -103,7 +103,7 @@ session_start();
 					echo '</select>';
 					// If logged in then allow to modfiy a alt
 					if($_SESSION['logged']){
-						echo '<button class="btn btn-info" style="width:100%;" href="#LinkToTextureModifier">Modify</button>';
+						echo '<a class="btn btn-info" style="width:155px;" href="#LinkToTextureModifier">Modify</a>';
 					} 
 					echo '</div></div>';
 					echo '</li>';
@@ -116,7 +116,7 @@ session_start();
 						echo '<div class="caption">';
 						echo '<h4>Texture Name</h4>';
 						echo '<select muliple size="3" style="width: 100%;" ></select>';
-						echo '<button class="btn btn-info" style="width:100%;" href="#LinkToAddNewTexture">Add New Texture</button>';
+						echo '<a class="btn btn-info" style="width:155px;" href="#LinkToAddNewTexture">Add New Texture</a>';
 						echo '</div>';
 						echo '</div>';
 						echo '</li>';
