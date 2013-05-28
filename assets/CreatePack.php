@@ -2,26 +2,27 @@
 <html>
 	<head>
 		<title>Soartex Customizer 2.0v</title>
+		<link rel="shortcut icon" href="./img/favicon.ico"/>
 		<!--Style Sheets-->
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/bootstrap-responsive.min.css">
 	</head>
 	<body>
 		<div class="container">
 			<!--Page Header-->
 			<div class="page-header">
-				<h1><img src="assets/img/soar.png"/> Soartex Fanver <small>Customizer Pack Creation</small></h1>
+				<h1><img src="./img/soar.png"/> Soartex Fanver <small>Customizer Pack Creation</small></h1>
 			</div>
 			<!--Do the work-->
 			<?php
 			if (isset($_POST['submit'])) {
 
 				// Get data to display
-				$string = file_get_contents("data/data.json");
+				$string = file_get_contents("../data/data.json");
 				$json_a = json_decode($string, true);
 
 				// Create user's folder
-				$folder = './workfolder/' . time();
+				$folder = '../workfolder/' . time();
 				$folder_textures = '/files';
 				$folder_export = '/export';
 				mkdir($folder, 0777, TRUE);
@@ -37,7 +38,7 @@
 						// Find url to alt texture
 						foreach ($texture['data'] as &$author) {
 							if ($author['name'] === $selection) {
-								$textureUrl = "data/" . $author['url'];
+								$textureUrl = "../data/" . $author['url'];
 							}
 						}
 						// Copy texture
@@ -54,8 +55,8 @@
 				}
 				echo '<div class="alert alert-info">Please wait while we compress your pack.</div>';
 				// Get the file zipper and make urls
-				include_once ('./assets/Zip_Archiver.php');
-				$export = $folder . $folder_export . '/Soartex_Fanver_Custom.zip';
+				include_once ('./Zip_Archiver.php');
+				$export = $folder . $folder_export . '/Soartex_Fanver_Customized.zip';
 				$zip_folder = $folder . $folder_textures . '/';
 
 				// Make the export directory
@@ -68,7 +69,7 @@
 				rrmdir($zip_folder);
 
 				// Remove all old folders
-				$files2 = glob('./workfolder/*');
+				$files2 = glob('../workfolder/*');
 				// Print each file name
 				foreach ($files2 as $file) {
 					//check to see if the file is a folder/directory
@@ -88,8 +89,9 @@
 
 				// Done
 				echo '<div class="alert alert-success">Done! Download your pack <a href="' . $export . '">here</a></div>';
+				echo '<div class="alert alert-success">Go back <a href="../">here</a></div>';
 			} else {
-				header("Location: ./index.php");
+				header("Location: ../");
 				exit ;
 			}
 			?>
