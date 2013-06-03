@@ -1,3 +1,10 @@
+<?php
+// Used to measure time to create a pack
+$time = microtime();
+$time = explode(' ', $time);
+$time = $time[1] + $time[0];
+$start = $time;
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -31,25 +38,31 @@
 				// Tab
 				foreach ($json_a as &$item) {
 					// Texture
-					foreach ($item['data'] as &$texture) {
-						// Get info from post
-						$textureName = str_replace(' ', '_', $item['name'].$texture['name']);
-						$selection = $_POST[$textureName];
-						// Find url to alt texture
-						foreach ($texture['data'] as &$author) {
-							if ($author['name'] === $selection) {
-								$textureUrl = "../data/" . $author['url'];
+					if(isset($item['data'])){
+						foreach ($item['data'] as &$texture) {
+							// Get info from post
+							$textureName = str_replace(' ', '_', $item['name'].$texture['name']);
+							if(isset($_POST[$textureName])){
+								$selection = $_POST[$textureName];
 							}
-						}
-						// Copy texture
-						if (isset($texture['export'])) {
-							$export = $folder . $folder_textures . '/' . $texture['export'];
-							// Create Export path
-							if (!file_exists(dirname($export))) {
-								mkdir(dirname($export), 0777, TRUE);
+							// Find url to alt texture
+							if(isset($texture['data'])){
+								foreach ($texture['data'] as &$author) {
+									if ($author['name'] === $selection) {
+										$textureUrl = "../data/" . $author['url'];
+									}
+								}
 							}
-							// Copy file
-							copy($textureUrl, $export);
+							// Copy texture
+							if (isset($texture['export'])) {
+								$export = $folder . $folder_textures . '/' . $texture['export'];
+								// Create Export path
+								if (!file_exists(dirname($export))) {
+									mkdir(dirname($export), 0777, TRUE);
+								}
+								// Copy file
+								copy($textureUrl, $export);
+							}
 						}
 					}
 				}
@@ -79,7 +92,7 @@
 							if ((time() - 60 * 60) >= intval(basename($file))) {
 								rrmdir($file);
 							}
-						} 
+						}
 						// An incorrect folder is in the directory. Delete it
 						catch(Exception $e) {
 							rrmdir($file);
@@ -87,13 +100,23 @@
 					}
 				}
 
+				// Time calculation
+				$time = microtime();
+				$time = explode(' ', $time);
+				$time = $time[1] + $time[0];
+				$finish = $time;
+				$total_time = round(($finish - $start), 4);
 				// Done
-				echo '<div class="alert alert-success">Done! Download your pack <a href="' . $export . '">here</a></div>';
-				echo '<div class="alert alert-success">Go back <a href="../">here</a></div>';
+				echo '<div class="alert alert-info">Done! In '.$total_time.' seconds</div>';
+				// Pack Link
+				echo '<div class="alert alert-success">Download your pack <a href="' . $export . '">Direct</a></div>';
+				echo '<div class="alert alert-info">Go back <a href="../">here</a></div>';
 			} else {
 				header("Location: ../");
 				exit ;
 			}
+
+
 			?>
 		</div>
 	</body>
