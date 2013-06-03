@@ -30,7 +30,7 @@ if (!$_SESSION['logged']) {
 			<!--Main Form-->
 			<form action="./submit/SubmitCategory.php" method="post">
 				<?php
-				echo '<legend>Edit you Category</legend>';
+				echo '<legend>Edit your Category</legend>';
 				echo '<label>Select Category</label>';
 				echo '<select class="span4" name="TabName">';
 				echo '<option selected>New Tab</option>';
