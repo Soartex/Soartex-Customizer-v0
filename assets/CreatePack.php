@@ -98,7 +98,6 @@
 		</div>
 	</body>
 </html>
-
 <?php
 //remove recusivly everything in a directory
 function rrmdir($dir) {
