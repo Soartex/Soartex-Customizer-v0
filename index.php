@@ -42,9 +42,9 @@ session_start();
 					</li>
 					<?php
 					// If logged in then allow to modfiy the catagories
-					if($_SESSION['logged']){
+					if(isset($_SESSION['logged']) && $_SESSION['logged']){
 						echo '<li>';
-						echo '<a style="background-color: rgba(61, 165, 194, .5);color: black;" href="#LinkToCatagoryEditor">Modify</a>';
+						echo '<a style="background-color: rgba(61, 165, 194, .5);color: black;" href="./Admin/ModifyCatagory.php">Modify</a>';
 						echo '</li>';
 						// Logout button (only if you are logged in)
 						echo '<li class="pull-right">';
@@ -70,46 +70,48 @@ session_start();
 					echo '<!--Thumbnail List-->';
 					echo '<ul class="thumbnails">';
 					// Go through data and display each texture
-					foreach ($item['data'] as &$texture) {
-					echo '<li>';
-
-					echo '<div class="thumbnail">';		
-					// Texture Picture (default to first texture)
-					echo '<a href="data/'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'2" target="_blank">';
-					echo '<img class="textureImg" src="data/'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'" />';
-					echo '</a>';
-					
-					echo '<div class="caption">';
-					// Texture name & select dropdown
-					echo '<h4>'.$texture['name'].'</h4>';
-					?>
-					<!--onmouseover="this.size=3" onmouseout="this.size=3"-->
-					<select muliple size="3" name="<?php echo $item['name'].$texture['name']?>" 
-						onChange="document.getElementById('<?php echo $item['name'].$texture['name']?>').src=this.options[this.selectedIndex].getAttribute('data-whichPicture'); document.getElementById('<?php echo $item['name'].$texture['name']?>2').href=this.options[this.selectedIndex].getAttribute('data-whichPicture');" >
-					<?php
-					// Add all alt textures
-					$first = true;
-					foreach ($texture['data'] as &$author) {
-						// Auto select the first one
-						if($first){
-							echo '<option selected data-whichPicture=data/' . $author['url'] . ' >' . $author['name'] . '</option>';
-							$first = false;
+					if(isset($item['data'])){
+						foreach ($item['data'] as &$texture) {
+						echo '<li>';
+	
+						echo '<div class="thumbnail">';		
+						// Texture Picture (default to first texture)
+						echo '<a href="data/'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'2" target="_blank">';
+						echo '<img class="textureImg" src="data/'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'" />';
+						echo '</a>';
+						
+						echo '<div class="caption">';
+						// Texture name & select dropdown
+						echo '<h4>'.$texture['name'].'</h4>';
+						?>
+						<!--onmouseover="this.size=3" onmouseout="this.size=3"-->
+						<select muliple size="3" name="<?php echo $item['name'].$texture['name']?>" 
+							onChange="document.getElementById('<?php echo $item['name'].$texture['name']?>').src=this.options[this.selectedIndex].getAttribute('data-whichPicture'); document.getElementById('<?php echo $item['name'].$texture['name']?>2').href=this.options[this.selectedIndex].getAttribute('data-whichPicture');" >
+						<?php
+						// Add all alt textures
+						$first = true;
+						foreach ($texture['data'] as &$author) {
+							// Auto select the first one
+							if($first){
+								echo '<option selected data-whichPicture=data/' . $author['url'] . ' >' . $author['name'] . '</option>';
+								$first = false;
+							}
+							// Add rest normally
+							else{
+								echo '<option data-whichPicture=data/' . $author['url'] . ' >' . $author['name'] . '</option>';
+							}
 						}
-						// Add rest normally
-						else{
-							echo '<option data-whichPicture=data/' . $author['url'] . ' >' . $author['name'] . '</option>';
+						echo '</select>';
+						// If logged in then allow to modfiy a alt
+						if(isset($_SESSION['logged']) && $_SESSION['logged']){
+							echo '<a class="btn btn-info" style="width:155px;" href="#LinkToTextureModifier">Modify</a>';
+						} 
+						echo '</div></div>';
+						echo '</li>';
 						}
-					}
-					echo '</select>';
-					// If logged in then allow to modfiy a alt
-					if($_SESSION['logged']){
-						echo '<a class="btn btn-info" style="width:155px;" href="#LinkToTextureModifier">Modify</a>';
-					} 
-					echo '</div></div>';
-					echo '</li>';
 					}
 					// If loggged in then allow to modfiy a texture
-					if($_SESSION['logged']){
+					if(isset($_SESSION['logged']) && $_SESSION['logged']){
 						echo '<li>';
 						echo '<div class="thumbnail" style="background-color:rgba(61, 165, 194, .06);">';
 						echo '<img src="http://placehold.it/64x64" />';
