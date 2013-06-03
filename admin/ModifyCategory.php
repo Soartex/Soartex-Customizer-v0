@@ -28,10 +28,10 @@ if (!$_SESSION['logged']) {
 				<h1><img src="../assets/img/soar.png"/> Soartex Fanver <small>Customizer ADMIN</small></h1>
 			</div>
 			<!--Main Form-->
-			<form action="./submit/SubmitCatagory.php" method="post">
+			<form action="./submit/SubmitCategory.php" method="post">
 				<?php
-				echo '<legend>Edit you Catagory</legend>';
-				echo '<label>Select Catagory</label>';
+				echo '<legend>Edit you Category</legend>';
+				echo '<label>Select Category</label>';
 				echo '<select class="span4" name="TabName">';
 				echo '<option selected>New Tab</option>';
 				foreach ($json_a as &$item) {
@@ -39,7 +39,7 @@ if (!$_SESSION['logged']) {
 				}
 				echo '</select>';
 				echo '</br>';
-				echo '<label>Catagory Name/Rename Catagory</label>';
+				echo '<label>Category Name/Rename Category</label>';
 				echo '<input class="span4" type="text" placeholder="Tab Name" name="TabNameInput">';
 				echo '</br>';
 				

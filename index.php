@@ -44,7 +44,7 @@ session_start();
 					// If logged in then allow to modfiy the catagories
 					if(isset($_SESSION['logged']) && $_SESSION['logged']){
 						echo '<li>';
-						echo '<a style="background-color: rgba(61, 165, 194, .5);color: black;" href="./Admin/ModifyCatagory.php">Modify</a>';
+						echo '<a style="background-color: rgba(61, 165, 194, .5);color: black;" href="./Admin/ModifyCategory.php">Modify</a>';
 						echo '</li>';
 						// Logout button (only if you are logged in)
 						echo '<li class="pull-right">';
