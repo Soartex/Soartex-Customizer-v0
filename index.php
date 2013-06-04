@@ -64,27 +64,27 @@ session_start();
 				<!--Tab Content-->
 				<div class="tab-content" style="overflow: visible;">
 					<?php
-					// Create a tab for each group
-					foreach ($json_a as &$item) {
-					echo '<div class="tab-pane" id="'.$item['name'].'">';
-					echo '<!--Thumbnail List-->';
-					echo '<ul class="thumbnails">';
-					// Go through data and display each texture
-					if(isset($item['data'])){
-					foreach ($item['data'] as &$texture) {
-					echo '<li>';
-					
-					echo '<div class="thumbnail">';
-					// Texture Picture (default to first texture)
-					if(isset($texture['data'][0])){
-					echo '<a href="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'2" target="_blank">';
-					echo '<img class="textureImg" src="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'" />';
-					echo '</a>';
-					}
-					
-					echo '<div class="caption">';
-					// Texture name & select dropdown
-					echo '<h4>'.$texture['name'].'</h4>';
+// Create a tab for each group
+foreach ($json_a as &$item) {
+echo '<div class="tab-pane" id="'.$item['name'].'">';
+echo '<!--Thumbnail List-->';
+echo '<ul class="thumbnails">';
+// Go through data and display each texture
+if(isset($item['data'])){
+foreach ($item['data'] as &$texture) {
+echo '<li>';
+
+echo '<div class="thumbnail">';
+// Texture Picture (default to first texture)
+if(isset($texture['data'][0])){
+echo '<a href="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'2" target="_blank">';
+echo '<img class="textureImg" src="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'" />';
+echo '</a>';
+}
+
+echo '<div class="caption">';
+// Texture name & select dropdown
+echo '<h4>'.$texture['name'].'</h4>';
 					?>
 					<!--onmouseover="this.size=3" onmouseout="this.size=3"-->
 					<select muliple size="3" name="<?php echo $item['name'].$texture['name']?>"
@@ -136,10 +136,19 @@ session_start();
 					<!-- Info Page -->
 					<div class="tab-pane active" id="info">
 						<p>
-							Welcome to the Soartex Customizer.
-						</p>
-						<p>
-							This is where a "how-to guide would go".
+							<h3><b>Welcome to the Soartex Customizer!</b></h3>
+							<br>
+							This website is designed to provide any pack user to 'customize' their textures.  You can do so by browsing through the tabs. Within each tab is a texture. You can select an alternate texture if it is available. If the preview image of the texture is too small, feel free to click on the image to get a full size texture. Once you are done changing your pack, head to the submit page. Click the button and your pack will be created for you. It may take a bit but please be patient; we try to make sure that your pack is high quality for you. After your pack has been created, download and enjoy!
+							<br>
+							<br>
+							<b>If you would like to see more alternate textures made:</b>
+							<br>
+							Feel free to check out the soartex forums at <a href="http://soartex.net">soartex.net</a>. We are always trying to provide the highest quality of textures for the user and if you would like to help by contributing feel free to stop by. This is a community effort and we cannot do it without the help of you.
+							<br>
+							<br>
+							<b>If you would like to have mod textures:</b>
+							<br>
+							We have created an application that allows you to conveniently download and install our huge repertoire of mod support. Feel free to download the mod patcher from <a href="http://files.soartex.net/texture-patcher/soartex/Soartex-Texture-Patcher-1.2.jar">here</a>, or have access to all mod files at <a href="http://files.soartex.net/mods/">files.soartex.net/mods/</a>
 						</p>
 					</div>
 					<!-- Submit Page -->
@@ -165,9 +174,9 @@ session_start();
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
 		<script>
-			$(function(){
-			  var hash = window.location.hash;
-			  hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+			$(function() {
+				var hash = window.location.hash;
+				hash && $('ul.nav a[href="' + hash + '"]').tab('show');
 			});
 		</script>
 	</body>
