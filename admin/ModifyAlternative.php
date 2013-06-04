@@ -56,7 +56,7 @@ if (!$_SESSION['logged']) {
 				echo '</br>';
 
 				// Update Textures
-				echo '<legend>Edit your Textures</legend>';
+				echo '<legend>Edit your Alternatives</legend>';
 				// Tab
 				echo '<label>Current Tab</label>';
 				echo '<select class="span4" name="TabName">';
