@@ -29,7 +29,7 @@ if (isset($_POST['TextureNameInput']) && isset($_POST['TextureName']) && isset($
 				$fp = fopen('../../data/data.json', 'w');
 				fwrite($fp, json_encode($json_a));
 				fclose($fp);
-				header("Location: ../../");
+				header("Location: ../../#".$_POST['TabName']);
 				exit ;
 			} else {
 				header("Location: ../../");
@@ -59,7 +59,7 @@ if (isset($_POST['TextureNameInput']) && isset($_POST['TextureName']) && isset($
 				fclose($fp);
 			}
 		}
-		header("Location: ../../");
+		header("Location: ../../#".$_POST['TabName']);
 		exit ;
 	}
 	// If deleting a selected texture
@@ -74,7 +74,7 @@ if (isset($_POST['TextureNameInput']) && isset($_POST['TextureName']) && isset($
 					$fp = fopen('../../data/data.json', 'w');
 					fwrite($fp, json_encode($json_a));
 					fclose($fp);
-					header("Location: ../../");
+					header("Location: ../../#".$_POST['TabName']);
 					exit ;
 				}
 			}

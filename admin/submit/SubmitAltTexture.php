@@ -25,7 +25,7 @@ if (isset($_POST['submitModify'])) {
 					$fp = fopen('../../data/data.json', 'w');
 					fwrite($fp, json_encode($json_a));
 					fclose($fp);
-					header("Location: ../../");
+					header("Location: ../../#".$_POST['TabName']);
 					exit ;
 				}
 			}
@@ -46,7 +46,7 @@ else if (isset($_POST['submitDelete'])) {
 			$fp = fopen('../../data/data.json', 'w');
 			fwrite($fp, json_encode($json_a));
 			fclose($fp);
-			header("Location: ../../");
+			header("Location: ../../#".$_POST['TabName']);
 			exit ;
 		}
 	}
@@ -78,7 +78,7 @@ else if (isset($_POST['submitAddAlt']) && $_POST['AltTextureNameInput'] !== "" &
 			$fp = fopen('../../data/data.json', 'w');
 			fwrite($fp, json_encode($json_a));
 			fclose($fp);
-			header("Location: ../../");
+			header("Location: ../../#".$_POST['TabName']);
 			exit ;
 		}
 	}

@@ -109,7 +109,7 @@ session_start();
 					echo '</select>';
 					// If logged in then allow to modfiy a alt
 					if (isset($_SESSION['logged']) && $_SESSION['logged']) {
-						echo '<a class="btn btn-info" style="width:155px;" href="./admin/ModifyAlternative.php?tab='.$item['name'].'&texture='.$texture['name'].'">Modify</a>';
+						echo '<a class="btn btn-info" style="width:155px;" href="./admin/ModifyAlternative.php?tab=' . $item['name'] . '&texture=' . $texture['name'] . '">Modify</a>';
 					}
 					echo '</div></div>';
 					echo '</li>';
@@ -164,5 +164,11 @@ session_start();
 		<!--JavaScript-->
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
+		<script>
+			$(function(){
+			  var hash = window.location.hash;
+			  hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+			});
+		</script>
 	</body>
 </html>
