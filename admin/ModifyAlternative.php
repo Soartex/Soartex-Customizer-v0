@@ -30,6 +30,32 @@ if (!$_SESSION['logged']) {
 			<!--Main Form-->
 			<form action="./submit/SubmitAltTexture.php" method="post" enctype="multipart/form-data">
 				<?php
+				// File upload
+				echo '<legend>Upload an Alternative</legend>';
+				?>
+				<div class="fileupload fileupload-new" data-provides="fileupload">
+					<div class="fileupload-new thumbnail" style="width:200px; height:200px;"><img src="../assets/img/200x200(noimage).gif" />
+					</div>
+					<div class="fileupload-preview fileupload-exists thumbnail" style="width: 200px; height: 200px;"></div>
+					<div>
+						<span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span>
+							<input type="file" name="myimage" id="file" />
+						</span>
+						<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+					</div>
+				</div>
+				<br>
+				<?php
+				// Alt Author
+				echo '<label>New Alternative Author</label>';
+				echo '<input class="span4" type="text" placeholder="Alternative Author" name="AltTextureNameInput">';
+				echo '</br>';
+				//submit info
+				echo '<button class="btn btn-success" type="submit" name="submitAddAlt">Upload</button>  ';
+				echo '</br>';
+				echo '</br>';
+
+				// Update Textures
 				echo '<legend>Edit your Textures</legend>';
 				// Tab
 				echo '<label>Current Tab</label>';
@@ -64,32 +90,6 @@ if (!$_SESSION['logged']) {
 				// Submit info
 				echo '<button class="btn btn-warning" type="submit" name="submitModify">Modify</button>  ';
 				echo '<button class="btn btn-danger" type="submit" name="submitDelete">Remove</button>';
-				echo '</br>';
-				echo '</br>';
-				// File upload
-				echo '<legend>Upload an Alternative</legend>';
-				?>
-				<div class="fileupload fileupload-new" data-provides="fileupload">
-					<div class="fileupload-new thumbnail" style="width:200px; height:200px;"><img src="../assets/img/200x200(noimage).gif" />
-					</div>
-					<div class="fileupload-preview fileupload-exists thumbnail" style="width: 200px; height: 200px;"></div>
-					<div>
-						<span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span>
-							<input type="file" name="myimage" id="file" />
-						</span>
-						<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
-					</div>
-				</div>
-				<br>
-				<?php
-				// Alt Author
-				echo '<label>New Alternative Author</label>';
-				echo '<input class="span4" type="text" placeholder="Alternative Author" name="AltTextureNameInput">';
-				echo '</br>';
-
-				//submit info
-				echo '</br>';
-				echo '<button class="btn btn-success" type="submit" name="submitAddAlt">Upload</button>  ';
 				?>
 			</form>
 		</div>
