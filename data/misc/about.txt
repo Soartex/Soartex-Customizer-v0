@@ -1,0 +1,1 @@
+This folder will hold files that will be copied along with the textures.

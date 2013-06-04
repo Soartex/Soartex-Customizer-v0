@@ -77,8 +77,8 @@ session_start();
 					echo '<div class="thumbnail">';
 					// Texture Picture (default to first texture)
 					if(isset($texture['data'][0])){
-					echo '<a href="data/'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'2" target="_blank">';
-					echo '<img class="textureImg" src="data/'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'" />';
+					echo '<a href="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'2" target="_blank">';
+					echo '<img class="textureImg" src="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'" />';
 					echo '</a>';
 					}
 					
@@ -97,12 +97,12 @@ session_start();
 						foreach ($texture['data'] as &$author) {
 							// Auto select the first one
 							if ($first) {
-								echo '<option selected data-whichPicture=data/' . $author['url'] . ' >' . $author['name'] . '</option>';
+								echo '<option selected data-whichPicture=' . $author['url'] . ' >' . $author['name'] . '</option>';
 								$first = false;
 							}
 							// Add rest normally
 							else {
-								echo '<option data-whichPicture=data/' . $author['url'] . ' >' . $author['name'] . '</option>';
+								echo '<option data-whichPicture=' . $author['url'] . ' >' . $author['name'] . '</option>';
 							}
 						}
 					}

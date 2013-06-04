@@ -62,7 +62,7 @@ if (isset($_POST['TextureNameInput']) && isset($_POST['TextureName']) && isset($
 		header("Location: ../../");
 		exit ;
 	}
-	// If deleting a selected tab
+	// If deleting a selected texture
 	else if (isset($_POST['submitDelete'])) {
 		// Impossible to delete a tab that isn't created
 		if ($_POST['TabName'] !== "New Texture") {

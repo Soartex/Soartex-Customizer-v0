@@ -49,7 +49,7 @@ $start = $time;
 							if(isset($texture['data'])){
 								foreach ($texture['data'] as &$author) {
 									if ($author['name'] === $selection) {
-										$textureUrl = "../data/" . $author['url'];
+										$textureUrl = "../" . $author['url'];
 									}
 								}
 							}

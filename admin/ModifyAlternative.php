@@ -28,8 +28,7 @@ if (!$_SESSION['logged']) {
 				<h1><img src="../assets/img/soar.png"/> Soartex Fanver <small>Customizer ADMIN</small></h1>
 			</div>
 			<!--Main Form-->
-			<!--Main Form-->
-			<form action="./submit/SubmitAltTexture.php" method="post">
+			<form action="./submit/SubmitAltTexture.php" method="post" enctype="multipart/form-data">
 				<?php
 				echo '<legend>Edit your Textures</legend>';
 				// Tab
@@ -51,7 +50,7 @@ if (!$_SESSION['logged']) {
 				foreach ($json_a[$_GET['tab']]['data'][$_GET['texture']]['data'] as &$alt) {
 					if ($first) {
 						echo '<option selected>' . $alt['name'] . '</option>';
-						$first=false;
+						$first = false;
 					} else {
 						echo '<option>' . $alt['name'] . '</option>';
 					}
@@ -76,12 +75,12 @@ if (!$_SESSION['logged']) {
 					<div class="fileupload-preview fileupload-exists thumbnail" style="width: 200px; height: 200px;"></div>
 					<div>
 						<span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span>
-							<input type="file" />
+							<input type="file" name="myimage" id="file" />
 						</span>
 						<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
 					</div>
 				</div>
-
+				<br>
 				<?php
 				// Alt Author
 				echo '<label>New Alternative Author</label>';
