@@ -20,8 +20,8 @@ if (isset($_POST['TabNameInput']) && isset($_POST['TabName'])) {
 		if ($_POST['TabName'] === "New Tab") {
 			if ($_POST['TabNameInput'] !== "") {
 				// Add data
-				$json_a[$_POST['TabNameInput']]['name'] = str_replace(' ', '_', $_POST['TabNameInput']);
-				$json_a[$_POST['TabNameInput']]['data'];
+				$json_a[str_replace(' ', '_', $_POST['TabNameInput'])]['name'] = str_replace(' ', '_', $_POST['TabNameInput']);
+				$json_a[str_replace(' ', '_', $_POST['TabNameInput'])]['data'];
 				//output file
 				$fp = fopen('../../data/data.json', 'w');
 				fwrite($fp, json_encode($json_a));
@@ -35,17 +35,19 @@ if (isset($_POST['TabNameInput']) && isset($_POST['TabName'])) {
 		}
 		//modifying an old tab, if a new name is typed
 		else if ($_POST['TabNameInput'] !== "") {
-			foreach ($json_a as $key => $value) {
-				if ($value['name'] === $_POST['TabName']) {
-					$json_a[$key]['name'] = str_replace(' ', '_', $_POST['TabNameInput']);
-					//output file
-					$fp = fopen('../../data/data.json', 'w');
-					fwrite($fp, json_encode($json_a));
-					fclose($fp);
-					header("Location: ../../");
-					exit ;
-				}
-			}
+			// Copy data
+			$json_a[str_replace(' ', '_', $_POST['TabNameInput'])] = $json_a[$_POST['TabName']];
+			$json_a[str_replace(' ', '_', $_POST['TabNameInput'])]['name'] = str_replace(' ', '_', $_POST['TabNameInput']);;
+			unset($json_a[$_POST['TabName']]);
+			// Sort
+			ksort($json_a);
+			// Output file
+			$fp = fopen('../../data/data.json', 'w');
+			fwrite($fp, json_encode($json_a));
+			fclose($fp);
+			header("Location: ../../");
+			exit ;
+
 		} else {
 			header("Location: ../../");
 			exit ;
