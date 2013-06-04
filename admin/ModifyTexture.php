@@ -43,22 +43,25 @@ if (!$_SESSION['logged']) {
 				echo '<option selected>New Texture</option>';
 				// Get current tab. Then get data containing textures
 				foreach ($json_a[$_GET['tab']]['data'] as &$texture) {
-					echo '<option>' . $texture['name'] . '</option>';
+					echo '<option value="'.$texture['name'].'">' . $texture['name'].' ('. $texture['export'].')</option>';
 				}
 				echo '</select>';
 				echo '</br>';
-				echo '<label>Texture Name/Rename Texture</label>';
+				echo '<label>Texture Name</label>';
 				echo '<input class="span4" type="text" placeholder="Tab Name" name="TextureNameInput">';
+				echo '</br>';
+				echo '<label>Texture Export</label>';
+				echo '<input class="span4" type="text" placeholder="/folder/filename.png" name="TextureExport">';
 				echo '</br>';
 
 				//submit info
-				echo '<button class="btn btn-success" type="submit" name="submitModify">Add</button>  ';
+				echo '<button class="btn btn-warning" type="submit" name="submitModify">Update</button>  ';
 				echo '<button class="btn btn-danger" type="submit" name="submitDelete">Remove</button>';
 				?>
 			</form>
 		</div>
 		<!--JavaScript-->
 		<script src="http://code.jquery.com/jquery.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="../assets/js/bootstrap.min.js"></script>
 	</body>
 </html>

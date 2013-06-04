@@ -13,15 +13,18 @@ $json_a = json_decode($string, true);
 ?>
 <?php
 //Check if there is info
-if (isset($_POST['TextureNameInput']) && isset($_POST['TextureName']) && isset($_POST['TabName'])) {
+if (isset($_POST['TextureNameInput']) && isset($_POST['TextureName']) && isset($_POST['TabName']) && isset($_POST['TextureExport'])) {
 	// Modifying a new Tab
 	if (isset($_POST['submitModify'])) {
 		// Adding a new tab
 		if ($_POST['TextureName'] === "New Texture") {
-			if ($_POST['TextureNameInput'] !== "") {
+			if ($_POST['TextureNameInput'] !== "" && $_POST['TextureExport'] !== "") {
 				// Add data
 				$json_a[$_POST['TabName']]['data'][$_POST['TextureNameInput']]['name'] = $_POST['TextureNameInput'];
+				$json_a[$_POST['TabName']]['data'][$_POST['TextureNameInput']]['export'] = $_POST['TextureExport'];
 				$json_a[$_POST['TabName']]['data'][$_POST['TextureNameInput']]['data'] = Array();
+				//sort
+				ksort($json_a[$_POST['TabName']]['data']);
 				//output file
 				$fp = fopen('../../data/data.json', 'w');
 				fwrite($fp, json_encode($json_a));
@@ -32,10 +35,32 @@ if (isset($_POST['TextureNameInput']) && isset($_POST['TextureName']) && isset($
 				header("Location: ../../");
 				exit ;
 			}
-		} else {
-			header("Location: ../../");
-			exit ;
 		}
+		// Updating Parts
+		else {
+			//update export
+			if ($_POST['TextureExport'] !== "") {
+				$json_a[$_POST['TabName']]['data'][$_POST['TextureName']]['export'] = $_POST['TextureExport'];
+				//output file
+				$fp = fopen('../../data/data.json', 'w');
+				fwrite($fp, json_encode($json_a));
+				fclose($fp);
+			}
+			//update name
+			if ($_POST['TextureNameInput'] !== "") {
+				$json_a[$_POST['TabName']]['data'][$_POST['TextureNameInput']] = $json_a[$_POST['TabName']]['data'][$_POST['TextureName']];
+				$json_a[$_POST['TabName']]['data'][$_POST['TextureNameInput']]['name'] = $_POST['TextureNameInput'];
+				unset($json_a[$_POST['TabName']]['data'][$_POST['TextureName']]);
+				//sort
+				ksort($json_a[$_POST['TabName']]['data']);
+				//output file
+				$fp = fopen('../../data/data.json', 'w');
+				fwrite($fp, json_encode($json_a));
+				fclose($fp);
+			}
+		}
+		header("Location: ../../");
+		exit ;
 	}
 	// If deleting a selected tab
 	else if (isset($_POST['submitDelete'])) {

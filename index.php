@@ -44,7 +44,7 @@ session_start();
 					// If logged in then allow to modfiy the catagories
 					if (isset($_SESSION['logged']) && $_SESSION['logged']) {
 						echo '<li>';
-						echo '<a href="./Admin/ModifyCategory.php">Modify</a>';
+						echo '<a href="./admin/ModifyCategory.php">Modify</a>';
 						echo '</li>';
 						// Logout button (only if you are logged in)
 						echo '<li class="pull-right">';
@@ -109,7 +109,7 @@ session_start();
 					echo '</select>';
 					// If logged in then allow to modfiy a alt
 					if (isset($_SESSION['logged']) && $_SESSION['logged']) {
-						echo '<a class="btn btn-info" style="width:155px;" href="#LinkToTextureModifier">Modify</a>';
+						echo '<a class="btn btn-info" style="width:155px;" href="./admin/ModifyAlternative.php?tab='.$item['name'].'&texture='.$texture['name'].'">Modify</a>';
 					}
 					echo '</div></div>';
 					echo '</li>';
@@ -119,11 +119,11 @@ session_start();
 					if(isset($_SESSION['logged']) && $_SESSION['logged']){
 					echo '<li>';
 					echo '<div class="thumbnail" style="background-color:rgba(61, 165, 194, .1);">';
-					echo '<img src="http://placehold.it/64x64" />';
+					echo '<img src="./assets/img/16x16(noimage).gif" />';
 					echo '<div class="caption">';
 					echo '<h4>Texture Name</h4>';
 					echo '<select muliple size="3" style="width: 100%;" ></select>';
-					echo '<a class="btn btn-info" style="width:155px;" href="./Admin/ModifyTexture.php?tab='.$item['name'].'">Add/Delete Texture</a>';
+					echo '<a class="btn btn-info" style="width:155px;" href="./admin/ModifyTexture.php?tab='.$item['name'].'">Update Textures</a>';
 					echo '</div>';
 					echo '</div>';
 					echo '</li>';
