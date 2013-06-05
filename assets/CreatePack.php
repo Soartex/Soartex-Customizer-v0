@@ -7,21 +7,21 @@ $start = $time;
 ?>
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Soartex Customizer 2.0v</title>
-		<link rel="shortcut icon" href="./img/favicon.ico"/>
-		<!--Style Sheets-->
-		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="./css/bootstrap-responsive.min.css">
-	</head>
-	<body>
-		<div class="container">
-			<!--Page Header-->
-			<div class="page-header">
-				<h1><img src="./img/soar.png"/> Soartex Fanver <small>Customizer Pack Creation</small></h1>
-			</div>
-			<!--Do the work-->
-			<?php
+<head>
+<title>Soartex Customizer 2.0v</title>
+<link rel="shortcut icon" href="./img/favicon.ico"/>
+<!--Style Sheets-->
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="./css/bootstrap-responsive.min.css">
+</head>
+<body>
+<div class="container">
+<!--Page Header-->
+<div class="page-header">
+<h1><img src="./img/soar.png"/> Soartex Fanver <small>Customizer Pack Creation</small></h1>
+</div>
+<!--Do the work-->
+<?php
 			if (isset($_POST['submit'])) {
 
 				// Get data to display
@@ -45,27 +45,37 @@ $start = $time;
 							if(isset($_POST[$textureName])){
 								$selection = $_POST[$textureName];
 							}
-							// Find url to alt texture
-							if(isset($texture['data'])){
+							// Has to have data inorder to copy something
+							if(isset($texture['data']) && count($texture['data'])){
+								// Find url to alt texture
 								foreach ($texture['data'] as &$author) {
 									if ($author['name'] === $selection) {
 										$textureUrl = "../" . $author['url'];
 									}
 								}
-							}
-							// Copy texture
-							if (isset($texture['export'])) {
-								$export = $folder . $folder_textures . '/' . $texture['export'];
-								// Create Export path
-								if (!file_exists(dirname($export))) {
-									mkdir(dirname($export), 0777, TRUE);
+								// Copy texture
+								if (isset($texture['export'])) {
+									$export = $folder . $folder_textures . '/' . $texture['export'];
+									// Create Export path
+									if (!file_exists(dirname($export))) {
+										mkdir(dirname($export), 0777, TRUE);
+									}
+									// Copy file
+									copy($textureUrl, $export);
 								}
-								// Copy file
-								copy($textureUrl, $export);
 							}
 						}
 					}
 				}
+				
+				echo '<div class="alert alert-info">Please wait while we add extras.</div>';
+				//Misc folder
+				if (!file_exists("../data/misc/")) {
+					mkdir("../data/misc/", 0777, TRUE);
+				}
+				//copy everything
+				recurse_copy("../data/misc/",$folder . $folder_textures . '/');
+				
 				echo '<div class="alert alert-info">Please wait while we compress your pack.</div>';
 				// Get the file zipper and make urls
 				include_once ('./Zip_Archiver.php');
@@ -117,6 +127,7 @@ $start = $time;
 			}
 
 
+
 			?>
 		</div>
 	</body>
@@ -137,5 +148,21 @@ function rrmdir($dir) {
 		reset($objects);
 		rmdir($dir);
 	}
+}
+?>
+<?php
+function recurse_copy($src, $dst) {
+	$dir = opendir($src);
+	@mkdir($dst);
+	while (false !== ($file = readdir($dir))) {
+		if (($file != '.') && ($file != '..')) {
+			if (is_dir($src . '/' . $file)) {
+				recurse_copy($src . '/' . $file, $dst . '/' . $file);
+			} else {
+				copy($src . '/' . $file, $dst . '/' . $file);
+			}
+		}
+	}
+	closedir($dir);
 }
 ?>

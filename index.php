@@ -64,27 +64,27 @@ session_start();
 				<!--Tab Content-->
 				<div class="tab-content" style="overflow: visible;">
 					<?php
-// Create a tab for each group
-foreach ($json_a as &$item) {
-echo '<div class="tab-pane" id="'.$item['name'].'">';
-echo '<!--Thumbnail List-->';
-echo '<ul class="thumbnails">';
-// Go through data and display each texture
-if(isset($item['data'])){
-foreach ($item['data'] as &$texture) {
-echo '<li>';
-
-echo '<div class="thumbnail">';
-// Texture Picture (default to first texture)
-if(isset($texture['data'][0])){
-echo '<a href="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'2" target="_blank">';
-echo '<img class="textureImg" src="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'" />';
-echo '</a>';
-}
-
-echo '<div class="caption">';
-// Texture name & select dropdown
-echo '<h4>'.$texture['name'].'</h4>';
+					// Create a tab for each group
+					foreach ($json_a as &$item) {
+					echo '<div class="tab-pane" id="'.$item['name'].'">';
+					echo '<!--Thumbnail List-->';
+					echo '<ul class="thumbnails">';
+					// Go through data and display each texture
+					if(isset($item['data'])){
+					foreach ($item['data'] as &$texture) {
+					echo '<li>';
+					
+					echo '<div class="thumbnail">';
+					// Texture Picture (default to first texture)
+					if(isset($texture['data'][0])){
+					echo '<a href="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'2" target="_blank">';
+					echo '<img class="textureImg" src="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'" />';
+					echo '</a>';
+					}
+					
+					echo '<div class="caption">';
+					// Texture name & select dropdown
+					echo '<h4>'.$texture['name'].'</h4>';
 					?>
 					<!--onmouseover="this.size=3" onmouseout="this.size=3"-->
 					<select muliple size="3" name="<?php echo $item['name'].$texture['name']?>"

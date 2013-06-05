@@ -44,6 +44,7 @@ else if (isset($_POST['submitDelete'])) {
 			// Delete the file, remove the data	
 			unlink ("../../".$json_a[$_POST['TabName']]['data'][$_POST['TextureName']]['data'][$i]['url']);
 			unset($json_a[$_POST['TabName']]['data'][$_POST['TextureName']]['data'][$i]);
+			$json_a[$_POST['TabName']]['data'][$_POST['TextureName']]['data'] = array_values($json_a[$_POST['TabName']]['data'][$_POST['TextureName']]['data']);
 			//output file
 			$fp = fopen('../../data/data.json', 'w');
 			fwrite($fp, json_encode($json_a));
