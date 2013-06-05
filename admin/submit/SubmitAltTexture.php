@@ -41,6 +41,8 @@ else if (isset($_POST['submitDelete'])) {
 	for ($i = 0; $i < count($json_a[$_POST['TabName']]['data'][$_POST['TextureName']]['data']); ++$i) {
 		// Find alt in array
 		if ($_POST['AltName'] === $json_a[$_POST['TabName']]['data'][$_POST['TextureName']]['data'][$i]['name']) {
+			// Delete the file, remove the data	
+			unlink ("../../".$json_a[$_POST['TabName']]['data'][$_POST['TextureName']]['data'][$i]['url']);
 			unset($json_a[$_POST['TabName']]['data'][$_POST['TextureName']]['data'][$i]);
 			//output file
 			$fp = fopen('../../data/data.json', 'w');

@@ -29,7 +29,7 @@ if (isset($_POST['TextureNameInput']) && isset($_POST['TextureName']) && isset($
 				$fp = fopen('../../data/data.json', 'w');
 				fwrite($fp, json_encode($json_a));
 				fclose($fp);
-				header("Location: ../../#".$_POST['TabName']);
+				header("Location: ../../#" . $_POST['TabName']);
 				exit ;
 			} else {
 				header("Location: ../../");
@@ -59,7 +59,7 @@ if (isset($_POST['TextureNameInput']) && isset($_POST['TextureName']) && isset($
 				fclose($fp);
 			}
 		}
-		header("Location: ../../#".$_POST['TabName']);
+		header("Location: ../../#" . $_POST['TabName']);
 		exit ;
 	}
 	// If deleting a selected texture
@@ -69,12 +69,18 @@ if (isset($_POST['TextureNameInput']) && isset($_POST['TextureName']) && isset($
 			// Loop and find the catagory to remove
 			foreach ($json_a[$_POST['TabName']]['data'] as $key => $value) {
 				if ($value['name'] === $_POST['TextureName']) {
+					//Remove all old textures
+					for ($i = 0; $i < count($value['data']); ++$i) {
+						// Delete the file, remove the data
+						unlink("../../" . $json_a[$_POST['TabName']]['data'][$_POST['TextureName']]['data'][$i]['url']);
+					}
+					//Remove Data
 					unset($json_a[$_POST['TabName']]['data'][$key]);
 					//output file
 					$fp = fopen('../../data/data.json', 'w');
 					fwrite($fp, json_encode($json_a));
 					fclose($fp);
-					header("Location: ../../#".$_POST['TabName']);
+					header("Location: ../../#" . $_POST['TabName']);
 					exit ;
 				}
 			}
