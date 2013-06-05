@@ -1,6 +1,7 @@
 /*texture thumbnails*/
 .thumbnail {
 	width: 200px;
+	height: 255px;
 	padding-top: 15px;
 	background-color: rgba(0, 0, 0, 0.015);
 }
