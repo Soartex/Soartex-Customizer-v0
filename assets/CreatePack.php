@@ -29,7 +29,7 @@ $start = $time;
 				$json_a = json_decode($string, true);
 
 				// Create user's folder
-				$folder = '../workfolder/' . time();
+				$folder = '/workfolder/' . time();
 				$folder_textures = '/files';
 				$folder_export = '/export';
 				mkdir($folder, 0777, TRUE);
@@ -55,7 +55,7 @@ $start = $time;
 								}
 								// Copy texture
 								if (isset($texture['export'])) {
-									$export = $folder . $folder_textures . '/' . $texture['export'];
+									$export = '../'.$folder . $folder_textures . '/' . $texture['export'];
 									// Create Export path
 									if (!file_exists(dirname($export))) {
 										mkdir(dirname($export), 0777, TRUE);
@@ -74,18 +74,18 @@ $start = $time;
 					mkdir("../data/misc/", 0777, TRUE);
 				}
 				//copy everything
-				recurse_copy("../data/misc/",$folder . $folder_textures . '/');
+				recurse_copy("../data/misc/",'../'.$folder . $folder_textures . '/');
 				
 				echo '<div class="alert alert-info">Please wait while we compress your pack.</div>';
 				// Get the file zipper and make urls
 				include_once ('./Zip_Archiver.php');
 				$export = $folder . $folder_export . '/Soartex_Fanver_Customized.zip';
-				$zip_folder = $folder . $folder_textures . '/';
+				$zip_folder = '../'.$folder . $folder_textures . '/';
 
 				// Make the export directory
-				mkdir(dirname($export), 0777, TRUE);
+				mkdir(dirname('../'.$export), 0777, TRUE);
 				// Zip folder
-				Zip_Archiver::Zip($zip_folder, $export);
+				Zip_Archiver::Zip($zip_folder, '../'.$export);
 
 				// Clean up
 				echo '<div class="alert alert-info">Please wait while we clean up.</div>';
@@ -118,9 +118,29 @@ $start = $time;
 				$total_time = round(($finish - $start), 4);
 				// Done
 				echo '<div class="alert alert-info">Done! In '.$total_time.' seconds</div>';
-				// Pack Link
-				echo '<div class="alert alert-success">Download your pack <a href="' . $export . '">Direct</a></div>';
-				echo '<div class="alert alert-info">Go back <a href="../">here</a></div>';
+                // Pack Link
+                echo '<div class="alert alert-success">Download your pack and suport us: <i class="icon-heart"></i> <a href="http://adf.ly/1347518/'.$_SERVER['SERVER_NAME'].$export .'">adfly</a> <i class="icon-heart"></i></div>';
+				// Go back
+                echo '<div class="alert alert-info">Go back <b><a href="../">here</a></b></div>';    
+                // Direct
+                echo '<div style="position: relative">';
+                echo '<div id="delayedText1" style="visibility:visible;position:absolute;top:0;left:0;width:100%;display:inline;"><div class="alert alert-info">Download your pack directly in <div style="display:inline;"id="timer_div">15</div> seconds</a></div></div>';
+                echo '<div id="delayedText2" style="visibility:hidden;position:absolute;top:0;left:0;width: 100%;z-index: 10;"><div class="alert alert-success">Download your pack and <b>NOT</b> support us: <a href="' . '../'.$export . '">Direct</a></div></div>';
+                ?>
+                <script>
+                var seconds_left = 15;
+                var interval = setInterval(function() {
+                document.getElementById('timer_div').innerHTML = --seconds_left;
+                if (seconds_left <= 0){
+                    document.getElementById('timer_div').innerHTML = '0';
+                    document.getElementById("delayedText1").style.visibility = "hidden";
+                    document.getElementById("delayedText2").style.visibility = "visible";
+                    clearInterval(interval);
+                }
+                }, 1000);
+                </script>
+                <?php
+                echo '</div>';            
 			} else {
 				header("Location: ../");
 				exit ;
