@@ -153,16 +153,17 @@ session_start();
 					</div>
 					<!-- Submit Page -->
 					<div class="tab-pane" id="submitTab">
-						<p>
-							Submit page.
-						</p>
-						<p>
-							This is where you would tell the user they are about to make there pack.
-						</p>
-						<p>
-							This button here would send to a .php that would then create the texture pack.
-						</p>
-						<button class="btn btn-success" type="submit" name="submit">
+                        <h3><b>Done??</b></h3>
+                        If you are sure you have created your pack to your liking feel free to press the button below. We created your pack based on the options you have chosen on this website. You might notice that in-game there are more textures then you chose on this website. All textures that do not have alts are automatically added. This is to provide a fuller experience for the player/user.
+                        <br>
+                        <br>
+                        Please note that when you use the customizer almost all ctm, random texture are removed because of the possibility for incompatibility. If you want to experience the full soartex fanver pack, feel free to download our primary pack.
+                        <br>
+                        <br>
+                        Enjoy your creation!  
+                        <br>
+                        <br>
+						<button class="btn btn-success btn-large btn-block" type="submit" name="submit">
 							Create Pack!
 						</button>
 					</div>
