@@ -97,12 +97,12 @@ session_start();
 						foreach ($texture['data'] as &$author) {
 							// Auto select the first one
 							if ($first) {
-								echo '<option selected data-whichPicture=' . $author['url'] . ' >' . $author['name'] . '</option>';
+								echo '<option title="'. $author['name'] .'" selected data-whichPicture=' . $author['url'] . ' >' . $author['name'] . '</option>';
 								$first = false;
 							}
 							// Add rest normally
 							else {
-								echo '<option data-whichPicture=' . $author['url'] . ' >' . $author['name'] . '</option>';
+								echo '<option title="'. $author['name'] .'"  data-whichPicture=' . $author['url'] . ' >' . $author['name'] . '</option>';
 							}
 						}
 					}
