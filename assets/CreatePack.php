@@ -145,10 +145,14 @@ $start = $time;
 				header("Location: ../");
 				exit ;
 			}
-
-
-
 			?>
+        <footer>
+            </br>
+            <hr>
+            <ul class="nav nav-pills">
+                <li class="pull-left"><a href="">&copy; Soartex 2013-2014 (Created for the Soartex Team)</a></li>
+            </ul>
+        </footer>
 		</div>
 	</body>
 </html>

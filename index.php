@@ -168,8 +168,14 @@ session_start();
 						</button>
 					</div>
 				</div>
-
 			</form>
+                <footer>
+                    </br>
+                    <hr>
+                    <ul class="nav nav-pills">
+                        <li class="pull-left"><a href="">&copy; Soartex 2013-2014 (Created for the Soartex Team)</a></li>
+                    </ul>
+                </footer>
 		</div>
 		<!--JavaScript-->
 		<script src="http://code.jquery.com/jquery.js"></script>
