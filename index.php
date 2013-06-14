@@ -163,9 +163,7 @@ session_start();
                         Enjoy your creation!  
                         <br>
                         <br>
-						<button class="btn btn-success btn-large btn-block" type="submit" name="submit">
-							Create Pack!
-						</button>
+						<input class="btn btn-success btn-large btn-block" type="submit" name="sub" onclick="disableButtons();" value="Create Pack!"/>
 					</div>
 				</div>
 			</form>
@@ -186,5 +184,14 @@ session_start();
 				hash && $('ul.nav a[href="' + hash + '"]').tab('show');
 			});
 		</script>
+        <script type="text/javascript">
+            function disableButtons() {
+                $('.btn').each(function () {
+                    $(this).attr('disabled', 'disabled');
+                    $(this).attr('value', 'Please Wait....');
+                    $(this).parents('form').submit();
+                });
+            }
+        </script>
 	</body>
 </html>

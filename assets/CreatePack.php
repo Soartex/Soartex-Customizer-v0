@@ -22,8 +22,10 @@ $start = $time;
 </div>
 <!--Do the work-->
 <?php
-			if (isset($_POST['submit'])) {
-
+			//Not sure how to get data from post from a disabled button, so disable this test for now.
+            //if (!isset($_POST)) {
+            if(sizeof($_POST)){
+        
 				// Get data to display
 				$string = file_get_contents("../data/data.json");
 				$json_a = json_decode($string, true);
@@ -119,13 +121,13 @@ $start = $time;
 				// Done
 				echo '<div class="alert alert-info">Done! In '.$total_time.' seconds</div>';
                 // Pack Link
-                echo '<div class="alert alert-success">Download your pack and suport us: <i class="icon-heart"></i> <a href="http://adf.ly/1347518/'.$_SERVER['SERVER_NAME'].$export .'">adfly</a> <i class="icon-heart"></i></div>';
+                echo '<div class="alert alert-success">Download your pack and suport us: <i class="icon-heart"></i> <a target="_blank" href="http://adf.ly/1347518/'.$_SERVER['SERVER_NAME'].$export .'">adfly</a> <i class="icon-heart"></i></div>';
 				// Go back
                 echo '<div class="alert alert-info">Go back <b><a href="../">here</a></b></div>';    
                 // Direct
                 echo '<div style="position: relative">';
                 echo '<div id="delayedText1" style="visibility:visible;position:absolute;top:0;left:0;width:100%;display:inline;"><div class="alert alert-info">Download your pack directly in <div style="display:inline;"id="timer_div">15</div> seconds</a></div></div>';
-                echo '<div id="delayedText2" style="visibility:hidden;position:absolute;top:0;left:0;width: 100%;z-index: 10;"><div class="alert alert-success">Download your pack and <b>NOT</b> support us: <a href="' . '../'.$export . '">Direct</a></div></div>';
+                echo '<div id="delayedText2" style="visibility:hidden;position:absolute;top:0;left:0;width: 100%;z-index: 10;"><div class="alert alert-success">Download your pack and <b>NOT</b> support us: <a target="_blank" href="' . '../'.$export . '">Direct</a></div></div>';
                 ?>
                 <script>
                 var seconds_left = 15;
