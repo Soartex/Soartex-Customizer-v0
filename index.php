@@ -6,12 +6,15 @@ session_start();
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Soartex Customizer 2.0v</title>
+		<title>Soartex Customizer</title>
 		<link rel="shortcut icon" href="./assets/img/favicon.ico"/>
 		<!--Style Sheets-->
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.min.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/mainindex.css">
+		<!--Google Analitics-->
+		
+		<!--End of Google Analitics-->
 	</head>
 	<body>
 		<?php
@@ -64,27 +67,27 @@ session_start();
 				<!--Tab Content-->
 				<div class="tab-content" style="overflow: visible;">
 					<?php
-					// Create a tab for each group
-					foreach ($json_a as &$item) {
-					echo '<div class="tab-pane" id="'.$item['name'].'">';
-					echo '<!--Thumbnail List-->';
-					echo '<ul class="thumbnails">';
-					// Go through data and display each texture
-					if(isset($item['data'])){
-					foreach ($item['data'] as &$texture) {
-					echo '<li>';
-					
-					echo '<div class="thumbnail">';
-					// Texture Picture (default to first texture)
-					if(isset($texture['data'][0])){
-					echo '<a href="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'2" target="_blank">';
-					echo '<img class="textureImg" src="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'" />';
-					echo '</a>';
-					}
-					
-					echo '<div class="caption">';
-					// Texture name & select dropdown
-					echo '<h4>'.$texture['name'].'</h4>';
+// Create a tab for each group
+foreach ($json_a as &$item) {
+echo '<div class="tab-pane" id="'.$item['name'].'">';
+echo '<!--Thumbnail List-->';
+echo '<ul class="thumbnails">';
+// Go through data and display each texture
+if(isset($item['data'])){
+foreach ($item['data'] as &$texture) {
+echo '<li>';
+
+echo '<div class="thumbnail">';
+// Texture Picture (default to first texture)
+if(isset($texture['data'][0])){
+echo '<a href="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'2" target="_blank">';
+echo '<img class="textureImg" src="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'" />';
+echo '</a>';
+}
+
+echo '<div class="caption">';
+// Texture name & select dropdown
+echo '<h4>'.$texture['name'].'</h4>';
 					?>
 					<!--onmouseover="this.size=3" onmouseout="this.size=3"-->
 					<select muliple size="3" name="<?php echo $item['name'].$texture['name']?>"
@@ -97,12 +100,12 @@ session_start();
 						foreach ($texture['data'] as &$author) {
 							// Auto select the first one
 							if ($first) {
-								echo '<option title="'. $author['name'] .'" selected data-whichPicture=' . $author['url'] . ' >' . $author['name'] . '</option>';
+								echo '<option title="' . $author['name'] . '" selected data-whichPicture=' . $author['url'] . ' >' . $author['name'] . '</option>';
 								$first = false;
 							}
 							// Add rest normally
 							else {
-								echo '<option title="'. $author['name'] .'"  data-whichPicture=' . $author['url'] . ' >' . $author['name'] . '</option>';
+								echo '<option title="' . $author['name'] . '"  data-whichPicture=' . $author['url'] . ' >' . $author['name'] . '</option>';
 							}
 						}
 					}
@@ -153,45 +156,33 @@ session_start();
 					</div>
 					<!-- Submit Page -->
 					<div class="tab-pane" id="submitTab">
-                        <h3><b>Done??</b></h3>
-                        If you are sure you have created your pack to your liking feel free to press the button below. We created your pack based on the options you have chosen on this website. You might notice that in-game there are more textures then you chose on this website. All textures that do not have alts are automatically added. This is to provide a fuller experience for the player/user.
-                        <br>
-                        <br>
-                        Please note that when you use the customizer almost all ctm, random texture are removed because of the possibility for incompatibility. If you want to experience the full soartex fanver pack, feel free to download our primary pack.
-                        <br>
-                        <br>
-                        Enjoy your creation!  
-                        <br>
-                        <br>
+						<h3><b>Done??</b></h3>
+						If you are sure you have created your pack to your liking feel free to press the button below. We created your pack based on the options you have chosen on this website. You might notice that in-game there are more textures then you chose on this website. All textures that do not have alts are automatically added. This is to provide a fuller experience for the player/user.
+						<br>
+						<br>
+						Please note that when you use the customizer almost all ctm, random texture are removed because of the possibility for incompatibility. If you want to experience the full soartex fanver pack, feel free to download our primary pack.
+						<br>
+						<br>
+						Enjoy your creation!
+						<br>
+						<br>
 						<input class="btn btn-success btn-large btn-block" type="submit" name="sub" onclick="disableButtons();" value="Create Pack!"/>
 					</div>
 				</div>
 			</form>
-                <footer>
-                    </br>
-                    <hr>
-                    <ul class="nav nav-pills">
-                        <li class="pull-left"><a href="">&copy; Soartex 2013-2014 (Created for the Soartex Team)</a></li>
-                    </ul>
-                </footer>
+			<footer>
+				<br>
+				<hr>
+				<ul class="nav nav-pills">
+					<li class="pull-left">
+						<a href="">&copy; Soartex 2013-2014 (Created for the Soartex Team)</a>
+					</li>
+				</ul>
+			</footer>
 		</div>
 		<!--JavaScript-->
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
-		<script>
-			$(function() {
-				var hash = window.location.hash;
-				hash && $('ul.nav a[href="' + hash + '"]').tab('show');
-			});
-		</script>
-        <script type="text/javascript">
-            function disableButtons() {
-                $('.btn').each(function () {
-                    $(this).attr('disabled', 'disabled');
-                    $(this).attr('value', 'Please Wait....');
-                    $(this).parents('form').submit();
-                });
-            }
-        </script>
+		<script src="assets/js/main.js"></script>
 	</body>
 </html>
