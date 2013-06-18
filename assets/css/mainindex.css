@@ -3,11 +3,11 @@
 	width: 200px;
 	height: 255px;
 	padding-top: 15px;
-	background-color: rgba(0, 0, 0, 0.015);
+	background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* Submit tab. Always the last tab */
-.submitTab {
+.submit{
 	background-color: rgba(147,197,114, 1);
 	color: white;
 }

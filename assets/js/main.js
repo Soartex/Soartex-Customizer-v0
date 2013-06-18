@@ -9,3 +9,6 @@ function disableButtons() {
 		$(this).parents('form').submit();
 	});
 }
+function trackTab(someurl){
+    _gaq.push(['_trackPageview', location.pathname + location.search + '#' + someurl]);
+}

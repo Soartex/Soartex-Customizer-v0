@@ -13,8 +13,21 @@ session_start();
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.min.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/mainindex.css">
 		<!--Google Analitics-->
-		
-		<!--End of Google Analitics-->
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-39887626-8']);
+            //Track Hashes
+            _gaq.push(['_trackPageview', location.pathname + location.search + location.hash]);
+			(function() {
+				var ga = document.createElement('script');
+				ga.type = 'text/javascript';
+				ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+		<!--End of Google Analitics-->        
 	</head>
 	<body>
 		<?php
@@ -32,16 +45,16 @@ session_start();
 				<!--Tab Names-->
 				<ul class="nav nav-pills" style="padding-bottom: 10px;">
 					<li class="active">
-						<a data-toggle="tab" href="#info">Info</a>
+						<a data-toggle="tab" href="#Info" onclick="trackTab(this.href.split('#')[1]);">Info</a>
 					</li>
 					<?php
 					// Create a tab for each group
 					foreach ($json_a as &$item) {
-						echo '<li><a data-toggle="tab" href="#' . $item['name'] . '">' . $item['name'] . '</a></li>';
+						echo '<li><a data-toggle="tab" href="#' . $item['name'] . '" onclick="trackTab(this.href.split(\'#\')[1]);">' . $item['name'] . '</a></li>';
 					}
 					?>
 					<li>
-						<a data-toggle="tab" class="submitTab" href="#submitTab">Submit</a>
+						<a data-toggle="tab" class="submit" href="#Submit" onclick="trackTab(this.href.split('#')[1]);">Submit</a>
 					</li>
 					<?php
 					// If logged in then allow to modfiy the catagories
@@ -67,27 +80,27 @@ session_start();
 				<!--Tab Content-->
 				<div class="tab-content" style="overflow: visible;">
 					<?php
-// Create a tab for each group
-foreach ($json_a as &$item) {
-echo '<div class="tab-pane" id="'.$item['name'].'">';
-echo '<!--Thumbnail List-->';
-echo '<ul class="thumbnails">';
-// Go through data and display each texture
-if(isset($item['data'])){
-foreach ($item['data'] as &$texture) {
-echo '<li>';
+                    // Create a tab for each group
+                    foreach ($json_a as &$item) {
+                    echo '<div class="tab-pane" id="'.$item['name'].'">';
+                    echo '<!--Thumbnail List-->';
+                    echo '<ul class="thumbnails">';
+                    // Go through data and display each texture
+                    if(isset($item['data'])){
+                    foreach ($item['data'] as &$texture) {
+                    echo '<li>';
 
-echo '<div class="thumbnail">';
-// Texture Picture (default to first texture)
-if(isset($texture['data'][0])){
-echo '<a href="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'2" target="_blank">';
-echo '<img class="textureImg" src="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'" />';
-echo '</a>';
-}
+                    echo '<div class="thumbnail">';
+                    // Texture Picture (default to first texture)
+                    if(isset($texture['data'][0])){
+                    echo '<a href="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'2" target="_blank">';
+                    echo '<img class="textureImg" src="'.$texture['data'][0]['url'].'" id="'.$item['name'].$texture['name'].'" />';
+                    echo '</a>';
+                    }
 
-echo '<div class="caption">';
-// Texture name & select dropdown
-echo '<h4>'.$texture['name'].'</h4>';
+                    echo '<div class="caption">';
+                    // Texture name & select dropdown
+                    echo '<h4>'.$texture['name'].'</h4>';
 					?>
 					<!--onmouseover="this.size=3" onmouseout="this.size=3"-->
 					<select muliple size="3" name="<?php echo $item['name'].$texture['name']?>"
@@ -137,7 +150,7 @@ echo '<h4>'.$texture['name'].'</h4>';
 					}
 					?>
 					<!-- Info Page -->
-					<div class="tab-pane active" id="info">
+					<div class="tab-pane active" id="Info">
 						<p>
 							<h3><b>Welcome to the Soartex Customizer!</b></h3>
 							<br>
@@ -155,7 +168,7 @@ echo '<h4>'.$texture['name'].'</h4>';
 						</p>
 					</div>
 					<!-- Submit Page -->
-					<div class="tab-pane" id="submitTab">
+					<div class="tab-pane" id="Submit">
 						<h3><b>Done??</b></h3>
 						If you are sure you have created your pack to your liking feel free to press the button below. We created your pack based on the options you have chosen on this website. You might notice that in-game there are more textures then you chose on this website. All textures that do not have alts are automatically added. This is to provide a fuller experience for the player/user.
 						<br>
@@ -181,8 +194,8 @@ echo '<h4>'.$texture['name'].'</h4>';
 			</footer>
 		</div>
 		<!--JavaScript-->
-		<script src="http://code.jquery.com/jquery.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
 		<script src="assets/js/main.js"></script>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
 	</body>
 </html>
