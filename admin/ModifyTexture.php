@@ -12,8 +12,8 @@ if (!$_SESSION['logged']) {
 		<title>Soartex Customizer 2.0v</title>
 		<link rel="shortcut icon" href="../assets/img/favicon.ico"/>
 		<!--Style Sheets-->
-		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-responsive.min.css">
+		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-responsive.css">
 		<link rel="stylesheet" type="text/css" href="../assets/css/mainindex.css">
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -35,7 +35,7 @@ if (!$_SESSION['logged']) {
 		<div class="container">
 			<!--Page Header-->
 			<div class="page-header">
-				<h1><img src="../assets/img/soar.png"/> Soartex Fanver <small>Customizer ADMIN</small></h1>
+				<h1><img src="../assets/img/soar64.png"/> Soartex Fanver <small>Customizer ADMIN</small></h1>
 			</div>
 			<!--Main Form-->
 			<!--Main Form-->

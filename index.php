@@ -3,43 +3,41 @@
 // Used for login
 session_start();
 ?>
+<!-- Copyright Soartex Fanver Team -->
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Soartex Customizer</title>
-		<link rel="shortcut icon" href="./assets/img/favicon.ico"/>
-		<!--Style Sheets-->
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.min.css">
-		<link rel="stylesheet" type="text/css" href="assets/css/mainindex.css">
-		<!--Google Analitics-->
-		<script type="text/javascript">
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-39887626-8']);
-            //Track Hashes
-            _gaq.push(['_trackPageview', location.pathname + location.search + location.hash]);
-			(function() {
-				var ga = document.createElement('script');
-				ga.type = 'text/javascript';
-				ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(ga, s);
-			})();
-		</script>
-		<!--End of Google Analitics-->        
-	</head>
-	<body>
+<head>
+<!-- Page information -->
+<title>Soartex Fanver</title>
+<meta charset="UTF-8"/>
+<!-- Icons -->
+<link rel="shortcut icon" href="assets/img/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/img/apple-icons/apple-touch-icon-114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/img/apple-icons/apple-touch-icon-144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/img/apple-icons/apple-touch-icon-114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/img/apple-icons/apple-touch-icon-144.png" />
+<!-- Stylesheets -->
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="assets/css/global.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/mainindex.css">
+<!-- Google Analytics -->
+
+<!-- End of Google Analytics -->
+</head>
+<body>
+<!--Header-->
+<?php require 'assets/presets/header.php'; ?>
+<div class="container" style="padding-top:30px;">
+  <div class="main-content">
+    <h1>Soartex Fanver <small>Customizer</small></h1>
+    <hr>
 		<?php
 		// Get data to display
 		$string = file_get_contents("data/data.json");
 		$json_a = json_decode($string, true);
 		?>
-		<div class="container">
-			<!--Page Header-->
-			<div class="page-header">
-				<h1><img src="./assets/img/soar.png"/> Soartex Fanver <small>Customizer</small></h1>
-			</div>
 			<!--Main Forum and Customizer-->
 			<form action="./assets/CreatePack.php" method="post">
 				<!--Tab Names-->
@@ -183,19 +181,13 @@ session_start();
 					</div>
 				</div>
 			</form>
-			<footer>
-				<br>
-				<hr>
-				<ul class="nav nav-pills">
-					<li class="pull-left">
-						<a href="">&copy; Soartex 2013-2014 (Created for the Soartex Team)</a>
-					</li>
-				</ul>
-			</footer>
-		</div>
-		<!--JavaScript-->
-		<script src="assets/js/main.js"></script>
-        <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-	</body>
+		</div>		
+	</div>
+<!-- Footer -->
+<?php require 'assets/presets/footer.php'; ?>
+</body>
+<!-- Javascripts -->
+<script src="assets/js/main.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.js"></script>
 </html>

@@ -5,53 +5,71 @@ $time = explode(' ', $time);
 $time = $time[1] + $time[0];
 $start = $time;
 ?>
+<!-- Copyright Soartex Fanver Team -->
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Soartex Customizer</title>
-		<link rel="shortcut icon" href="./img/favicon.ico"/>
-		<!--Style Sheets-->
-		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="./css/bootstrap-responsive.min.css">
-		<!--Google Analitics-->
-		<script type="text/javascript">
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-39887626-8']);
-			_gaq.push(['_trackPageview']);
-			(function() {
-				var ga = document.createElement('script');
-				ga.type = 'text/javascript';
-				ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(ga, s);
-			})();
-		</script>
-		<!--End of Google Analitics-->
-		<!--Google Analitics Link Code-->
-		<script type="text/javascript">
-			function trackOutboundLink(link, category, action) {
+<head>
+<!-- Page information -->
+<title>Soartex Fanver</title>
+<meta charset="UTF-8"/>
+<!-- Icons -->
+<link rel="shortcut icon" href="img/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/apple-icons/apple-touch-icon-114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-icons/apple-touch-icon-144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-icons/apple-touch-icon-114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-icons/apple-touch-icon-144.png" />
+<!-- Stylesheets -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
+<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+<link rel="stylesheet" type="text/css" href="css/mainindex.css">
+<!-- Google Analytics -->
 
-				try {
-					_gaq.push(['_trackEvent', category, action]);
-				} catch(err) {
-				}
-
-				//setTimeout(function() {
-				//	window.open('', '_newtab').location.href=link.href;
-				//window.focus();
-				//document.location.href = link.href;
-				//}, 300);
-			}
-		</script>
-		<!--End of Google Analitics Link Code-->
-	</head>
-	<body>
-		<div class="container">
-			<!--Page Header-->
-			<div class="page-header" href="http://customizer.soartex.net">
-				<h1><img src="./img/soar.png"/> Soartex Fanver <small>Customizer Pack Creation</small></h1>
-			</div>
+<!-- End of Google Analytics -->
+</head>
+<body>
+<!--Header-->
+<div class="header"> 
+  <!-- Logo --> 
+  <img src="img/logo.png" alt="Soartex Fanver Forums"> 
+  <!-- Nav Bar -->
+  <nav class="navbar navbar-static-top">
+    <div class="navbar-inner"> <a class="brand" href="http://soartex.net/"> <img src="img/soar32.png"> Soartex</a> 
+      <!--Menu List-->
+      <ul class="nav">
+        <li> <a href="http://soartex.net/"><i class="icon-home"></i> Home </a> </li>
+        <li> <a href="http://soartex.net/forum/"><i class="icon-pencil"></i> Forums </a> </li>
+        <li> <a href="http://soartex.net/downloads/"><i class="icon-download"></i> Downloads </a> </li>
+        <li> <a href="http://customizer.soartex.net/"><i class = "icon-list"></i> Customizer</a> </li>
+        <li> <a href="http://files.soartex.net/"><i class="icon-file"></i> File Server </a> </li>
+        <!--List for tools/extra stuff-->
+        <li class="dropdown closed"> <a class="dropdown-toggle" data-toggle="dropdown" ><i class="icon-wrench"></i> Tools <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li> <a href="http://soartex.net/texture-patcher/"><i class = "icon-cog"></i> Texture-Patcher</a> </li>
+            <li> <a href="https://github.com/Soartex-Fanver/"><i class = "icon-globe"></i> Our Github</a> </li>
+            <li> <a href="http://files.soartex.net/zip-manager/"><i class = "icon-hdd"></i> Zip Manager</a> </li>
+            <li> <a href="http://soartex.net/tools/"><i class = "icon-info-sign"></i> About Our Tools</a> </li>
+          </ul>
+        </li>
+      </ul>
+      <!-- User Login -->
+      <ul class="nav pull-right">
+        <li class="dropdown closed"> <a class="dropdown-toggle" data-toggle="dropdown" id="1"><i class="icon-user"></i><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li> <a href="">Sign In</a> </li>
+            <li> <a href="">Register</a> </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<!-- End of Header -->
+<div class="container" style="padding-top:30px;">
+  <div class="main-content">
+    <h1>Soartex Fanver <small>Customizer Pack Creation</small></h1>
+    <hr>
 			<!--Do the work-->
 			<?php
 			// Include the helper
@@ -175,6 +193,7 @@ $start = $time;
                 		<div class="alert alert-success">Download your pack and <b>NOT</b> support us: <a target="_blank" href="<?php echo '../' . $export; ?>" onClick="window.open('', '_newtab').location.href=this.href; trackOutboundLink(this, 'Outbound Links', 'Direct Download'); return false;">Direct</a></div>
                 	</div>
                 </div>
+                <br><br><br>
                 <!--Countdown code-->
                 <script>
 					// Seconds to count down
@@ -198,15 +217,13 @@ $start = $time;
 				exit ;
 				}
 			?>
-			<footer>
-				<br>
-				<hr>
-				<ul class="nav nav-pills">
-					<li class="pull-left">
-						<a href="">&copy; Soartex 2013-2014 (Created for the Soartex Team)</a>
-					</li>
-				</ul>
-			</footer>
+			</div>
 		</div>
-	</body>
+<!-- Footer -->
+<?php require 'presets/footer.php'; ?>
+</body>
+<!-- Javascripts -->
+<script src="js/main.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
 </html>
