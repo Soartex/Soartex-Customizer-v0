@@ -187,7 +187,7 @@ session_start();
 <?php require 'assets/presets/footer.php'; ?>
 </body>
 <!-- Javascripts -->
-<script src="assets/js/main.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="assets/js/main.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.js"></script>
 </html>
