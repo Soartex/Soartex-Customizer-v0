@@ -23,7 +23,7 @@ session_start();
 <link rel="stylesheet" type="text/css" href="assets/css/global.css" />
 <link rel="stylesheet" type="text/css" href="assets/css/mainindex.css">
 <!-- Google Analytics -->
-
+<script type="text/javascript" src="assets/js/google.js"></script>
 <!-- End of Google Analytics -->
 </head>
 <body>

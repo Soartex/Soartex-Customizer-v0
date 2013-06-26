@@ -25,7 +25,7 @@ $start = $time;
 <link rel="stylesheet" type="text/css" href="css/global.css" />
 <link rel="stylesheet" type="text/css" href="css/mainindex.css">
 <!-- Google Analytics -->
-
+<script type="text/javascript" src="js/google.js"></script>
 <!-- End of Google Analytics -->
 </head>
 <body>
