@@ -1,3 +1,4 @@
+<?php $url_add=""; require 'assets/cake/cake.php'; ?>
 <?php
 // Used to measure time to create a pack
 $time = microtime();
@@ -13,59 +14,24 @@ $start = $time;
 <title>Soartex Fanver</title>
 <meta charset="UTF-8"/>
 <!-- Icons -->
-<link rel="shortcut icon" href="img/favicon.ico" />
-<link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/apple-icons/apple-touch-icon-114.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-icons/apple-touch-icon-144.png" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-icons/apple-touch-icon-114.png" />
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-icons/apple-touch-icon-144.png" />
+<link rel="shortcut icon" href="assets/img/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/img/apple-icons/apple-touch-icon-114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/img/apple-icons/apple-touch-icon-144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/img/apple-icons/apple-touch-icon-114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/img/apple-icons/apple-touch-icon-144.png" />
 <!-- Stylesheets -->
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
-<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-<link rel="stylesheet" type="text/css" href="css/global.css" />
-<link rel="stylesheet" type="text/css" href="css/mainindex.css">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="assets/css/global.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/mainindex.css">
 <!-- Google Analytics -->
-<script type="text/javascript" src="js/google.js"></script>
+<script type="text/javascript" src="assets/js/google.js"></script>
 <!-- End of Google Analytics -->
 </head>
 <body>
 <!--Header-->
-<div class="header"> 
-  <!-- Logo --> 
-  <img src="img/logo.png" alt="Soartex Fanver Forums"> 
-  <!-- Nav Bar -->
-  <nav class="navbar navbar-static-top">
-    <div class="navbar-inner"> <a class="brand" href="http://soartex.net/"> <img src="img/soar32.png"> Soartex</a> 
-      <!--Menu List-->
-      <ul class="nav">
-        <li> <a href="http://soartex.net/"><i class="icon-home"></i> Home </a> </li>
-        <li> <a href="http://soartex.net/forum/"><i class="icon-pencil"></i> Forums </a> </li>
-        <li> <a href="http://soartex.net/downloads/"><i class="icon-download"></i> Downloads </a> </li>
-        <li> <a href="http://customizer.soartex.net/"><i class = "icon-list"></i> Customizer</a> </li>
-        <li> <a href="http://files.soartex.net/"><i class="icon-file"></i> File Server </a> </li>
-        <!--List for tools/extra stuff-->
-        <li class="dropdown closed"> <a class="dropdown-toggle" data-toggle="dropdown" ><i class="icon-wrench"></i> Tools <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li> <a href="http://soartex.net/texture-patcher/"><i class = "icon-cog"></i> Texture-Patcher</a> </li>
-            <li> <a href="https://github.com/Soartex-Fanver/"><i class = "icon-globe"></i> Our Github</a> </li>
-            <li> <a href="http://files.soartex.net/zip-manager/"><i class = "icon-hdd"></i> Zip Manager</a> </li>
-            <li> <a href="http://soartex.net/tools/"><i class = "icon-info-sign"></i> About Our Tools</a> </li>
-          </ul>
-        </li>
-      </ul>
-      <!-- User Login -->
-      <ul class="nav pull-right">
-        <li class="dropdown closed"> <a class="dropdown-toggle" data-toggle="dropdown" id="1"><i class="icon-user"></i><b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li> <a href="">Sign In</a> </li>
-            <li> <a href="">Register</a> </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</div>
-<!-- End of Header -->
+<?php $url_add=""; require 'assets/presets/header.php'; ?>
 <div class="container" style="padding-top:30px;">
   <div class="main-content">
     <h1>Soartex Fanver <small>Customizer Pack Creation</small></h1>
@@ -73,12 +39,12 @@ $start = $time;
 			<!--Do the work-->
 			<?php
 			// Include the helper
-			include './Helper.php';
+			include './assets/Helper.php';
 			//Make sure there is data in the post
             if(sizeof($_POST)){
         
 				// Get data to display
-				$string = file_get_contents("../data/data.json");
+				$string = file_get_contents("./data/data.json");
 				$json_a = json_decode($string, true);
 
 				// Create user's folder
@@ -90,15 +56,15 @@ $start = $time;
 				//Copy pack additional textures
 				echo '<div class="alert alert-info">Please wait while we add pack textures.</div>';
 				//Misc folder
-				if (!file_exists("../data/packadditions/")) {
-					mkdir("../data/packadditions/", 0777, TRUE);
+				if (!file_exists("./data/packadditions/")) {
+					mkdir("./data/packadditions/", 0777, TRUE);
 				}
 				//Texture copy folder
-				if (!file_exists('../'.$folder . $folder_textures . '/')) {
-					mkdir('../'.$folder . $folder_textures . '/', 0777, TRUE);
+				if (!file_exists('./'.$folder . $folder_textures . '/')) {
+					mkdir('./'.$folder . $folder_textures . '/', 0777, TRUE);
 				}
 				//copy everything
-				recurse_copy("../data/packadditions/",'../'.$folder . $folder_textures . '/');
+				recurse_copy("./data/packadditions/",'./'.$folder . $folder_textures . '/');
 				
 				echo '<div class="alert alert-info">Please wait while we compile your content.</div>';
 				// Copy customized files(overwrites additions), Tab
@@ -116,12 +82,12 @@ $start = $time;
 								// Find url to alt texture
 								foreach ($texture['data'] as &$author) {
 									if ($author['name'] === $selection) {
-										$textureUrl = "../" . $author['url'];
+										$textureUrl = "./" . $author['url'];
 									}
 								}
 								// Copy texture
 								if (isset($texture['export'])) {
-									$export = '../'.$folder . $folder_textures . '/' . $texture['export'];
+									$export = './'.$folder . $folder_textures . '/' . $texture['export'];
 									// Create Export path
 									if (!file_exists(dirname($export))) {
 										mkdir(dirname($export), 0777, TRUE);
@@ -136,19 +102,19 @@ $start = $time;
 				
 				echo '<div class="alert alert-info">Please wait while we compress your pack.</div>';
 				// Get the file zipper and make urls
-				include_once ('./Zip_Archiver.php');
+				include_once ('./assets/Zip_Archiver.php');
 				$export = $folder . $folder_export . '/Soartex_Fanver_Customized.zip';
-				$zip_folder = '../'.$folder . $folder_textures . '/';
+				$zip_folder = './'.$folder . $folder_textures . '/';
 				// Make the export directory
-				mkdir(dirname('../'.$export), 0777, TRUE);
+				mkdir(dirname('./'.$export), 0777, TRUE);
 				// Zip folder
-				Zip_Archiver::Zip($zip_folder, '../'.$export);
+				Zip_Archiver::Zip($zip_folder, './'.$export);
 
 				echo '<div class="alert alert-info">Please wait while we clean up.</div>';
 				// Clean up the copy folder
 				rrmdir($zip_folder);
 				// Remove all old download folders
-				$files2 = glob('../workfolder/*');
+				$files2 = glob('./workfolder/*');
 				// Print each file name
 				foreach ($files2 as $file) {
 					//check to see if the file is a folder/directory
@@ -182,7 +148,7 @@ $start = $time;
                 	<i class="icon-heart"></i>
                 </div>
 				<!--Go back-->
-                <div class="alert alert-info">Go back <b><a href="../">here</a></b></div>
+                <div class="alert alert-info">Go back <b><a href="./">here</a></b></div>
 				
 				<!--Direct-->
                 <div style="position: relative;">
@@ -190,7 +156,7 @@ $start = $time;
 	                	<div class="alert alert-info">Download your pack directly in <div style="display:inline;" id="timer_div">15</div> seconds</div>
 	                </div>
                 	<div id="delayedText2" style="visibility:hidden;position:absolute;top:0;left:0;width:100%;z-index: 10;">
-                		<div class="alert alert-success">Download your pack and <b>NOT</b> support us: <a target="_blank" href="<?php echo '../' . $export; ?>" onClick="window.open('', '_newtab').location.href=this.href; trackOutboundLink(this, 'Outbound Links', 'Direct Download'); return false;">Direct</a></div>
+                		<div class="alert alert-success">Download your pack and <b>NOT</b> support us: <a target="_blank" href="<?php echo './' . $export; ?>" onClick="window.open('', '_newtab').location.href=this.href; trackOutboundLink(this, 'Outbound Links', 'Direct Download'); return false;">Direct</a></div>
                 	</div>
                 </div>
                 <br><br><br>
@@ -213,17 +179,17 @@ $start = $time;
                 <?php
 				// If post not submited send the user home
 				}else {
-				header("Location: ../");
+				header("Location: ./");
 				exit ;
 				}
 			?>
 			</div>
 		</div>
 <!-- Footer -->
-<?php require 'presets/footer.php'; ?>
+<?php require './assets/presets/footer.php'; ?>
 </body>
 <!-- Javascripts -->
-<script src="js/main.js"></script>
+<script src="assets/js/main.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.js"></script>
 </html>

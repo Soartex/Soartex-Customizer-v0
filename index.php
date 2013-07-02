@@ -1,7 +1,10 @@
-<?php
-// Start User Session
-// Used for login
-session_start();
+<?php 
+$url_add=""; 
+require 'assets/cake/cake.php';
+$edit_content=false;
+if(isUserLoggedIn()) {
+	$edit_content = $loggedInUser->checkPermission(array(2,4));
+}
 ?>
 <!-- Copyright Soartex Fanver Team -->
 <!DOCTYPE html>
@@ -39,7 +42,7 @@ session_start();
 		$json_a = json_decode($string, true);
 		?>
 			<!--Main Forum and Customizer-->
-			<form action="./assets/CreatePack.php" method="post">
+			<form action="./CreatePack.php" method="post">
 				<!--Tab Names-->
 				<ul class="nav nav-pills" style="padding-bottom: 10px;">
 					<li class="active">
@@ -56,19 +59,9 @@ session_start();
 					</li>
 					<?php
 					// If logged in then allow to modfiy the catagories
-					if (isset($_SESSION['logged']) && $_SESSION['logged']) {
+					if ($edit_content) {
 						echo '<li>';
 						echo '<a href="./admin/ModifyCategory.php">Modify</a>';
-						echo '</li>';
-						// Logout button (only if you are logged in)
-						echo '<li class="pull-right">';
-						echo '<a href="assets/VerifyLogin.php?type=logout">Logout</a>';
-						echo '</li>';
-					}
-					// Login button (show only if not logged in)
-					else {
-						echo '<li class="pull-right">';
-						echo '<a href="./login/">Login</a>';
 						echo '</li>';
 					}
 					?>
@@ -122,7 +115,7 @@ session_start();
 					}
 					echo '</select>';
 					// If logged in then allow to modfiy a alt
-					if (isset($_SESSION['logged']) && $_SESSION['logged']) {
+					if ($edit_content) {
 						echo '<a class="btn btn-info" style="width:155px;" href="./admin/ModifyAlternative.php?tab=' . $item['name'] . '&texture=' . $texture['name'] . '">Modify</a>';
 					}
 					echo '</div></div>';
@@ -130,7 +123,7 @@ session_start();
 					}
 					}
 					// If loggged in then allow to modfiy a texture
-					if(isset($_SESSION['logged']) && $_SESSION['logged']){
+					if($edit_content){
 					echo '<li>';
 					echo '<div class="thumbnail" style="background-color:rgba(61, 165, 194, .1);">';
 					echo '<img src="./assets/img/16x16(noimage).gif" />';

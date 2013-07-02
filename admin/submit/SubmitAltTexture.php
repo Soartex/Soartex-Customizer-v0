@@ -1,9 +1,12 @@
-<?php
-//check user login
-session_start();
-if (!$_SESSION['logged']) {
-	header("Location: ../../");
-	exit ;
+<?php 
+$url_add="../../"; 
+require '../../assets/cake/cake.php';
+$edit_content=false;
+if(isUserLoggedIn()) {
+	if(!$loggedInUser->checkPermission(array(2,4))){
+		header("Location: ../../");
+		exit ;	
+	}
 }
 ?>
 <?php
