@@ -156,7 +156,16 @@ if(isUserLoggedIn()) {
 							<b>If you would like to have mod textures:</b>
 							<br>
 							We have created an application that allows you to conveniently download and install our huge repertoire of mod support. Feel free to download the mod patcher from <a href="http://files.soartex.net/texture-patcher/soartex/Soartex-Texture-Patcher-1.2.jar">here</a>, or have access to all mod files at <a href="http://files.soartex.net/mods/">files.soartex.net/mods/</a>
-						</p>
+                            <br>
+							<br>
+                            <b>Other customizers??</b>
+                            <br>
+                            <ul>
+                                <li><a href="http://customizer.soartex.net">Soartex 1.6.x Customizer</a></li>
+                                <li><a href="http://customizer1.5.soartex.net">Soartex 1.5.x Customizer</a></li>
+                                <li><a href="http://minecraftcustomizer.net/pack/Soartex+Fanver">Soartex 1.4.x Customizer</a></li>
+                            </ul>
+                        </p>
 					</div>
 					<!-- Submit Page -->
 					<div class="tab-pane" id="Submit">
