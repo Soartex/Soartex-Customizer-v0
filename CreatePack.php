@@ -149,33 +149,6 @@ $start = $time;
                 </div>
 				<!--Go back-->
                 <div class="alert alert-info">Go back <b><a href="./">here</a></b></div>
-				
-				<!--Direct-->
-                <div style="position: relative;">
-	                <div id="delayedText1" style="visibility:visible;position:absolute;top:0;left:0;width:100%;display:inline;">
-	                	<div class="alert alert-info">Download your pack directly in <div style="display:inline;" id="timer_div">15</div> seconds</div>
-	                </div>
-                	<div id="delayedText2" style="visibility:hidden;position:absolute;top:0;left:0;width:100%;z-index: 10;">
-                		<div class="alert alert-success">Download your pack and <b>NOT</b> support us: <a target="_blank" href="<?php echo './' . $export; ?>" onClick="window.open('', '_newtab').location.href=this.href; trackOutboundLink(this, 'Outbound Links', 'Direct Download'); return false;">Direct</a></div>
-                	</div>
-                </div>
-                <br><br><br>
-                <!--Countdown code-->
-                <script>
-					// Seconds to count down
-					var seconds_left = 15;
-					var interval = setInterval(function() {
-						document.getElementById('timer_div').innerHTML = --seconds_left;
-						if (seconds_left <= 0) {
-							// Set the timer to 0
-							document.getElementById('timer_div').innerHTML = '0';
-							//Display one, hide the other
-							document.getElementById("delayedText1").style.visibility = "hidden";
-							document.getElementById("delayedText2").style.visibility = "visible";
-							clearInterval(interval);
-						}
-					}, 1000);
-                </script>
                 <?php
 				// If post not submited send the user home
 				}else {
