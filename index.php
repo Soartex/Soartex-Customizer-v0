@@ -34,7 +34,7 @@ if(isUserLoggedIn()) {
 <?php require 'assets/presets/header.php'; ?>
 <div class="container" style="padding-top:30px;">
   <div class="main-content">
-    <h1>Soartex Fanver <small>Customizer</small></h1>
+    <h1>Soartex Fanver <small>Customizer x.x</small></h1>
     <hr>
 		<?php
 		// Get data to display
@@ -145,20 +145,21 @@ if(isUserLoggedIn()) {
 						<p>
 							<h3><b>Welcome to the Soartex Customizer!</b></h3>
 							<br>
-							This website is designed to provide any pack user to 'customize' their textures.  You can do so by browsing through the tabs. Within each tab is a texture. You can select an alternate texture if it is available. If the preview image of the texture is too small, feel free to click on the image to get a full size texture. Once you are done changing your pack, head to the submit page. Click the button and your pack will be created for you. It may take a bit but please be patient; we try to make sure that your pack is high quality for you. After your pack has been created, download and enjoy!
+
+Choose the textures in Soartex! Browse through the tabs above to view groups of similar textures. Each texture has a list of selectable authors below it. Clicking on a texture will make it appear in a separate view, where it can be seen in more detail. Once finished selecting textures, head over to the submit tab.
 							<br>
 							<br>
-							<b>If you would like to see more alternate textures made:</b>
+							<b>Want more textures to pick from?</b>
 							<br>
-							Feel free to check out the soartex forums at <a href="http://soartex.net">soartex.net</a>. We are always trying to provide the highest quality of textures for the user and if you would like to help by contributing feel free to stop by. This is a community effort and we cannot do it without the help of you.
+							We are always adding new textures, thanks to those who contribute their time and effort. There is a centralized forum to post your new textures at <a href="http://soartex.net">soartex.net</a>.
 							<br>
 							<br>
-							<b>If you would like to have mod textures:</b>
+							<b>Where are the mod textures?</b>
 							<br>
-							We have created an application that allows you to conveniently download and install our huge repertoire of mod support. Feel free to download the mod patcher from <a href="http://files.soartex.net/texture-patcher/soartex/Soartex-Texture-Patcher-1.2.jar">here</a>, or have access to all mod files at <a href="http://files.soartex.net/mods/">files.soartex.net/mods/</a>
+							The customizer works great with the Texture Patcher, a standalone program that adds the latest mod textures to your texture pack. Take a look <a href="http://files.soartex.net/texture-patcher/soartex/Soartex-Texture-Patcher-1.2.jar">here</a>, or install and update manually using the raw files here: <a href="http://files.soartex.net/mods/">files.soartex.net/mods/</a>
                             <br>
 							<br>
-                            <b>Other customizers??</b>
+                            <b>Older versions of Minecraft:</b>
                             <br>
                             <ul>
                                 <li><a href="http://customizer.soartex.net">Soartex 1.6.x Customizer</a></li>
@@ -169,14 +170,12 @@ if(isUserLoggedIn()) {
 					</div>
 					<!-- Submit Page -->
 					<div class="tab-pane" id="Submit">
-						<h3><b>Done??</b></h3>
-						If you are sure you have created your pack to your liking feel free to press the button below. We created your pack based on the options you have chosen on this website. You might notice that in-game there are more textures then you chose on this website. All textures that do not have alts are automatically added. This is to provide a fuller experience for the player/user.
+						<h3><b>Ready?</b></h3>
+The green button below will make your texture pack with the selections you chose. Any textures that aren't chosen here are added from the main pack. Unfortunately, randomobs and some of the CTM in the main pack are not added because they clash.
 						<br>
 						<br>
-						Please note that when you use the customizer almost all ctm, random texture are removed because of the possibility for incompatibility. If you want to experience the full soartex fanver pack, feel free to download our primary pack.
-						<br>
-						<br>
-						Enjoy your creation!
+					
+					Enjoy your creation! ...Nice choices, by the way.
 						<br>
 						<br>
 						<input class="btn btn-success btn-large btn-block" type="submit" name="sub" onclick="disableButtons();" value="Create Pack!"/>
