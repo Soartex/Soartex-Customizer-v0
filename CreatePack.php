@@ -1,4 +1,3 @@
-<?php $url_add=""; require 'assets/cake/cake.php'; ?>
 <?php
 // Used to measure time to create a pack
 $time = microtime();
