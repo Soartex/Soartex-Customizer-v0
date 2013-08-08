@@ -1,14 +1,3 @@
-<?php 
-$url_add="../../"; 
-require '../../assets/cake/cake.php';
-$edit_content=false;
-if(isUserLoggedIn()) {
-	if(!$loggedInUser->checkPermission(array(2,4))){
-		header("Location: ../../");
-		exit ;	
-	}
-}
-?>
 <?php
 // Get data
 $string = file_get_contents("../../data/data.json");

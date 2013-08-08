@@ -1,9 +1,10 @@
-<?php 
-$url_add=""; 
-require 'assets/cake/cake.php';
+<?php
+// Start User Session
+// Used for login
+session_start();
 $edit_content=false;
-if(isUserLoggedIn()) {
-	$edit_content = $loggedInUser->checkPermission(array(2,4));
+if (isset($_SESSION['logged']) && $_SESSION['logged']) {
+        $edit_content=true;
 }
 ?>
 <!-- Copyright Soartex Fanver Team -->
@@ -63,7 +64,17 @@ if(isUserLoggedIn()) {
 						echo '<li>';
 						echo '<a href="./admin/ModifyCategory.php">Modify</a>';
 						echo '</li>';
+                        // Logout button (only if you are logged in)
+						echo '<li class="pull-right">';
+						echo '<a href="./login/VerifyLogin.php?type=logout">Logout</a>';
+						echo '</li>';
 					}
+                    // Login button (show only if not logged in)
+                    else {
+                        echo '<li class="pull-right">';
+                        echo '<a href="./login/">Login</a>';
+                        echo '</li>';
+                    }
 					?>
 				</ul>
 				<!--Nice Division-->

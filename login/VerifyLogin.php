@@ -11,7 +11,7 @@ if (isset($_GET['type'])) {
 			header("Location: ../");
 			exit ;
 		} else {
-			header("Location: ../login/");
+			header("Location: ./");
 			exit ;
 		}
 	}
