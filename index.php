@@ -167,7 +167,7 @@ Choose the textures in Soartex! Browse through the tabs above to view groups of 
 							<br>
 							<b>Where are the mod textures?</b>
 							<br>
-							The customizer works great with the Texture Patcher, a standalone program that adds the latest mod textures to your texture pack. Take a look <a href="http://files.soartex.net/texture-patcher/soartex/Soartex-Texture-Patcher-1.2.jar">here</a>, or install and update manually using the raw files here: <a href="http://files.soartex.net/mods/">files.soartex.net/mods/</a>
+							The customizer works great with the Texture Patcher, a standalone program that adds the latest mod textures to your texture pack. Take a look <a href="http://soartex.net/texture-patcher/">here</a>, or install and update manually using the raw files here: <a href="http://files.soartex.net/mods/">files.soartex.net/mods/</a>
                             <br>
 							<br>
                             <b>Older versions of Minecraft:</b>
