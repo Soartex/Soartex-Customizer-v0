@@ -141,7 +141,7 @@ $start = $time;
 				<!--Done! Time-->
 				<div class="alert alert-info">Done! In <?php echo $total_time; ?> seconds</div>
                <!--Adfly Pack Link-->
-                <div class="alert alert-success">Download your pack and suport us: 
+                <div class="alert alert-success">Download your pack and support us: 
                 	<i class="icon-heart"></i> 
                 	<a target="_blank" href="http://adf.ly/1347518/<?php echo $_SERVER['SERVER_NAME'] . $export; ?>" onClick="window.open('', '_newtab').location.href=this.href; trackOutboundLink(this, 'Outbound Links', 'Adfly Download'); return false;">adfly</a> 
                 	<i class="icon-heart"></i>
